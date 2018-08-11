@@ -1,0 +1,629 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body{
+	height: 100%;
+}
+
+/** Base Properties **/
+
+.container-fluid{
+	
+}
+
+.container{
+	overflow: hidden; 
+}
+
+.active{
+	color: #00f9d7 !important;
+    border-bottom: 2px solid #00f9d7;
+}
+
+ h2{
+	font-size: 48px;
+	position: relative;
+	letter-spacing: 1px;
+	display: inline-block;
+	margin-bottom: 25px;
+    font-family: serif, "lora";
+}
+
+h2:after{
+    content: '';
+    width: 100%;
+    height: 3px;
+    background: #279a8f;
+    bottom: -5px;
+    left: 0;
+    position: absolute;
+}
+
+h3{
+    font-size: 38px;
+	position: relative;
+	letter-spacing: 1.2px;
+	display: inline-block;
+	margin-bottom: 25px;
+    font-family: serif, "lora";
+    font-style: italic;
+}
+
+h3:after{
+    content: '';
+    width: 100%;
+    height: 3px;
+    background: #279a8f;
+    bottom: -5px;
+    left: 0;
+    position: absolute;
+}
+/*
+h3:before{
+	content: ' ';
+	width: 100%;
+	height: 1px;
+    background: #279a8f;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+/*
+h2:before{
+	content: ' ';
+	width: 100%;
+	height: 1px;
+    background: #279a8f;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}*/
+
+ 
+
+.section{
+	background: linear-gradient(to right, white, #e0dfdf);
+	height: auto;
+	padding: 60px 0;
+	overflow: hidden;
+	color: #252525;
+}
+
+.section .content{
+	padding: 0 15px;
+}
+
+.section .text-style-1{
+	line-height: 29px;
+	font-style: italic;
+	font-family: 'Lora', 'Cambria';
+	font-size: 20px;
+	margin-bottom: 25px;
+}
+
+.section .text-style-2{
+	font-size: 16px;
+	line-height: 26px;
+	font-family: 'lora', serif;
+}
+
+.section .content-img{
+	padding: 0 15px;
+}
+
+.content-img img{
+	height: auto;
+	width: 100%;
+	box-shadow: 3.8px 3.8px gray;
+}
+
+
+/** Header **/
+
+.header-main{
+	background: url('../img/NY-L.jpg') center center no-repeat;
+    background-attachment: fixed;
+	background-size: cover;
+    position: relative;
+    z-index: 90;
+	height: 100%;
+	width: 100%;
+}
+.header-main .filter{
+	background: rgba(0,0,0,0.35);
+	height: 100%;
+	width: 100%;
+}
+
+
+/** Header - Navbar **/
+
+.navbar-bg{
+    height: 58px;
+    position: fixed;
+    z-index: 95;
+    background: #252525;
+    width: 100%;
+    display: none;
+}
+
+.navbar-fixed{
+	position: fixed;
+	height: 58px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+    z-index: 100;
+}
+
+.media-list{
+	display: flex;
+	padding-left: 61px;
+	list-style: none;
+}
+
+.media-list li{
+	text-align: center;
+	padding: 17px 10px;
+}
+
+.media-list li a{
+	text-decoration: none;
+	font-size: 22px;
+	color: #00f9d7; 	
+}
+.media-list a:hover{
+	color: #29bfb1;
+	transition: 0.4s;
+}
+ 
+.section-links{
+	display: flex;
+	list-style: none;
+	padding-right: 44px;
+}
+
+.section-links li{
+	text-align: center;
+	padding: 20px 10px 20px 13px;
+}
+
+.section-links li a{
+	text-decoration: none;
+	font-family: sans-serif;
+	font-size: 0.9em;
+	letter-spacing: 1px;
+	color: white; 
+    padding-bottom: 7px;
+}
+
+.section-links li a:hover{
+	color: #00f9d7; 
+}
+
+
+/** Navbar-Toggle **/
+
+.navbar-toggle{
+    margin-top: 11px;
+    margin-right: 20px;
+    padding: 9px 10px;
+    display: none;
+    border: 1px solid #00f9d7;
+    border-radius: 4px;
+    height: 35px;
+    width: 45px;
+    cursor: pointer;
+    background: transparent;
+    outline:0;
+}
+
+.navbar-toggle:hover{
+    background: #4d5d5b;
+    transition: 0.4s;
+}
+
+.navbar-toggle:not(:hover){
+    background: transparent;
+    transition: 0.4s;
+}
+
+.line-bar{
+    background: #00f9d7;
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 1px;
+    margin-bottom: 4px;
+}
+
+/** Collapsable-nav **/
+
+.collapsable-nav{
+    background: #252525;
+    height: auto;
+    width: 100%;
+    position: absolute;
+    top: 58px;
+	left: 0;
+    text-align: center;
+    border-top: 1px solid gray;
+    display: none;
+}
+
+.collapsable-nav a{
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+	font-family: sans-serif;
+	font-size: 0.9em;
+	letter-spacing: 1px;
+	color: white; 
+}
+
+.collapsable-nav a:hover{
+    color: #00f9d7;
+}
+
+/**  Header - Title **/ 
+
+.header-title{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	text-align: center;
+}
+
+.brand h1{
+	font-family: sans-serif;
+	letter-spacing: 3px;
+	font-size: 58px;
+}
+
+.brand span{
+	color: #00f9d7;
+	font-family: "serif";
+	font-size: 0.9em;
+}
+
+.brand .img-line{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	width: 100%;
+	height: 30px;
+	margin: -8px 0;
+}
+
+.brand .img-line img{
+    height: 50px;
+}
+
+.button{
+	display: inline-block;
+	margin-top: 50px;
+	padding: 16px 31px;
+	border-radius: 3px;
+	text-decoration: none;
+	color: white;
+	font-size: 15px;
+	font-family: 'Helvetica', sans-serif;
+	letter-spacing: 1px;
+	background: #3ac5b8;
+}
+
+.button:hover{
+	background: #279a8f;
+	transition: 0.5s;
+}
+.button:not(:hover){
+	background: #29bfb1;
+	transition: 0.5s;
+}
+
+.to-content {
+    animation: bounce .8s infinite alternate;
+	text-decoration: none;
+    display: block;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    z-index: 3;
+    padding: 35px 0 25px;
+    color: #fff;
+    font-size: 3.5em;
+}
+
+@keyframes bounce{
+	0%{
+		padding-bottom: 25px;
+    	padding-top: 35px;
+    	color: #fff;
+	}
+	100%{
+		padding-bottom: 35px;
+    	padding-top: 25px;
+    	color: transparent;
+	}
+}
+
+
+/** About - Content **/
+
+.about span{
+	font-weight: 100;
+	font-family: sans-serif;
+	font-size: 12px;
+	font-style: italic;
+	letter-spacing: 1px;
+	line-height: 12px;
+	display: block;
+}
+
+/** About - Parallax **/
+
+.terms-parallax{
+	background: url('../img/Loan.jpg') no-repeat;
+    background-attachment: fixed;
+	background-size: cover;
+    position: relative;
+    z-index: 1;
+	height: auto;
+	width: 100%;
+	color: white;  
+}
+.terms-parallax.section{
+    padding: 0;
+}
+
+.terms-parallax .filter{
+	background: rgba(0,0,0,0.4);
+	padding: 60px 0;
+}
+.terms-parallax .container{
+	text-align: center;
+}
+.terms-parallax p{
+	line-height: 29px;
+	font-family: 'Lora', 'Cambria';
+	font-size: 20px;
+	margin-bottom: 25px;
+}
+
+
+.terms-parallax span{
+	display: inline-block;
+	margin-right: 9px;
+}
+
+/** Submit **/
+
+.input{
+    padding: 8px 16px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    width: 95%;
+    margin-bottom: 20px;
+    color: #555;
+	font-family: 'lora', serif;
+    outline: none;
+}
+
+input.button{
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+}
+
+/** Contact **/
+
+.contact{
+    background: url('../img/Contact.jpg') no-repeat fixed; /**#345f59 #263332 **/
+    background-size: cover; 
+    position: relative;
+    z-index: 1;
+    height: auto;
+    width: 100%;
+	color: white;
+}
+
+.contact .filter{
+	background: rgba(0,0,0,0.75);
+	padding: 60px 0;
+}
+
+.contact.section{
+    padding: 0;
+}
+.contact .heading{
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.contact p{
+	font-family: 'Lora', 'Cambria';
+	font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.contact .heading p{
+    margin: auto;
+    width: 80%;
+    margin-bottom: 20px;
+    line-height: 29px;
+}
+
+.middle-line{
+    border-right: 1px solid white;
+}
+
+
+.map{
+    border: 1px solid #252525;
+    width: 100%;
+    height: 540px;
+    overflow: hidden;
+    box-shadow: 3.8px 3.8px gray;
+    margin-top: 25px;
+	margin-bottom: -35px;
+}
+
+/** Footer **/
+
+footer{
+    width: 100%;
+    background: #252525;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: 17.5px;
+}
+
+/** Media Queries **/
+
+
+/********** Extra small devices only **********/
+@media (max-width: 767px) {
+    
+    .contact{
+        background-position: center center;   
+    }
+    
+    .navbar-bg{
+        display: block !important;
+        /* Needs to be "!important" because it has FadeOut() JQuery Function applied - This puts an inline style to display: none */
+    }
+    
+    .navbar-toggle{
+        display: block;
+    }
+    
+    .section-links{
+        display: none;
+    }
+    
+    .active{
+        border-bottom: 0;
+    }
+    
+    .media-list{
+        padding-left: 10px;
+    }
+	
+    .brand .button{
+        margin-top: 55px;
+    }
+    
+    .brand h1{
+        font-size: 47px;
+    }
+   
+    .brand .img-line img{
+        width: 84%;
+    }
+    
+    .about .content-img img{
+        margin-top: 25px;
+    }
+    
+	.map{
+		height: 270px;
+        margin-top: 0;
+	}
+    
+    .middle-line{
+        border-right: 0;
+    }
+	
+    input.button{
+        margin-bottom: 45px;
+    }
+    
+}
+
+
+/********** Super extra small devices Only (e.g., iPhone 4) **********/
+@media (max-width: 479px) {
+    
+    .about-parallax{
+        background-position: center center;   
+    }
+	
+    .brand h1{
+        font-size: 35px;
+    }
+
+    .brand span{
+        color: #00f9d7;
+        font-family: "serif";
+    }
+
+    .brand .img-line{
+        height: 30px;
+        margin: -8px 0;
+    }
+
+}
+/********** Small devices only **********/
+@media (min-width: 768px) {
+    .collapsable-nav{
+        display: none !important;
+        /* Needs to be "!important" because it has SlideToggle() JQuery Function applied - This puts an inline style to display: block */
+    }
+    
+    .about .content-img img{
+        margin-top: 25px;
+    }
+    
+     input.button{
+        margin-bottom: 45px;
+    }
+    
+    .middle-line{
+        border-right: 0;
+    }
+}
+
+/********** Medium devices only **********/
+@media (min-width: 992px) {
+     .about .content-img img{
+        margin-top: 0;
+    }
+    
+     input.button{
+        margin-bottom: 0;
+    }
+    
+    .middle-line{
+        border-right: 1px solid white;
+    }
+}
+
+/********** Large devices only **********/
+@media (min-width: 1200px) {
+
+}
+
+@media (max-height: 476px) and (orientation:landscape){
+    .header-main{
+        height: 500px;
+    }
+    
+    .header-main .filter{
+        height: 500px;
+    }
+}
+
+
+
+

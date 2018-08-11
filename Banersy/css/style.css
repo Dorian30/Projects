@@ -1,0 +1,1018 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    font-family: "BundaySans", sans-serif;
+}
+
+body{
+    background: url('../img/Background.svg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.section{
+    padding: 25px 0;
+}
+
+.page{
+    /* Avoids lines images getting outside the page */
+    overflow: hidden;
+}
+
+@font-face { /* Buntype - BundaySans-Bold */
+	font-family: BundaySans;
+	src: url("../fonts/Buntype-BundaySansBold.otf") format('opentype');
+    font-weight: 700;
+}
+
+@font-face { /* Buntype - BundaySans-SemiLightUpIt */
+	font-family: BundaySans;
+	src: url("../fonts/Buntype-BundaySansSemiLightUpIt.otf") format('opentype');
+    font-weight: 500;
+}
+
+@font-face { /* Buntype - BundaySans-ThinIt */
+	font-family: BundaySans;
+	src: url("../fonts/Buntype-BundaySansThinIt.otf") format('opentype');
+    font-weight: 300;
+}
+
+/* # Z-Index:
+
+SideNav - 1000
+Scroll Navbar - 500
+
+*/
+
+/*--------------------
+    SCROLL NAVBAR (0)
+---------------------*/
+
+.scroll-navbar{
+    display: none; /*For JQuery Animation  FadeIn()*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /*Required due to the fixed position */
+    height: 65px;
+    z-index: 500;
+    background: -webkit-linear-gradient(left, white, #e0dfdf);
+    background: -o-linear-gradient(left, white, #e0dfdf);
+    background: linear-gradient(to right, white, #e0dfdf);
+    box-shadow: 1px 1px 1px rgba(37, 37, 37, 0.27);
+}
+
+.scroll-navbar .nav-wrapper{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* Since the elements aren't aligned vertically then all of them have 100% height */
+}
+
+.scroll-navbar ul{
+    display: flex;
+    align-items: center;
+}
+
+.scroll-navbar .logo a{
+    display: inline-block; /*To cover logo */
+    width: 150px;
+    padding-top: 10px; /*Positioning */
+    margin-left: -20px;
+}
+
+.scroll-navbar .logo a:nth-child(2){ /*Small Logo */
+    display: none;
+}
+
+.button-collapse{
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    height: 100%; /*Not necessary for the scroll navbar, but necesary for the header navbar */
+}
+
+.button-collapse i{
+    font-size: 39px;
+    color: #67625f;
+}
+
+/*------------
+    SIDE NAV 
+-------------*/
+
+.side-nav{
+    background: url('../img/Background.svg') no-repeat center center;
+    background-size: cover;
+    overflow: hidden; /* Avoids lines images getting outside the sidenav */
+}
+
+.side-nav li:nth-child(1){ /* Banersy Logo Container */
+    text-align: center;
+    line-height: 0;
+    padding: 20px;
+}
+
+.side-nav li:nth-child(1) img{ /* Banersy Logo */
+    max-width: 260px;
+}
+
+.side-nav .lines{
+    position: absolute;
+    width: 120%;
+    top: 0px;
+    left: 122px;
+}
+
+/*-------------
+    HEADER (0)
+---------------*/
+
+.header{
+    width: 100%;
+    height: 600px;
+    background: url(../img/Banersy-Home.jpg) no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative; /*anchor */
+    z-index: 2;
+}
+
+.header .logo{
+    width: 100%;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.header .logo a{
+    display: inline-block;
+    max-width: 300px;
+    height: 100px;
+    padding: 12px;
+    
+    /* Background */
+    background: -webkit-linear-gradient(top left, transparent 5%, white 50%, transparent 93%);
+    background: -o-linear-gradient(top left, transparent 5%, white 50%, transparent 93%);
+    background: linear-gradient(to bottom right, transparent 5%, white 50%, transparent 93%);
+}
+
+.header .logo img{
+    width: 90%;
+}
+
+.header .slogan{
+    max-width: 650px;
+    height: 65px;
+    margin: 65px auto;
+    position: relative; /* anchor */
+    
+    /* Flex To align Text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Background */
+    background: -webkit-linear-gradient(left, transparent, rgba(25, 24, 24, 0.76), rgba(25, 24, 24, 0.76), rgba(25, 24, 24, 0.76), transparent);
+    background: -o-linear-gradient(left, transparent, rgba(25, 24, 24, 0.76), rgba(25, 24, 24, 0.76), rgba(25, 24, 24, 0.76), transparent);
+    background: linear-gradient(to right, transparent, rgba(25, 24, 24, 0.76), rgba(25, 24, 24, 0.76), rgba(25, 24, 24, 0.76), transparent);
+    
+    font-size: 2.4em;
+    color: white;
+    font-weight: 800;
+}
+
+.header .slogan:before, .header .slogan:after{
+    height: 1px;
+    width: 70%;
+    content: '';
+    background: white;
+}
+
+.header .slogan:before{ /* Top white line */
+    position: absolute;
+    left: 15%;
+    top: -10px;
+    z-index: 5;
+}
+
+.header .slogan:after{ /* Bottom white line */
+    position: absolute;
+    left: 15%;
+    bottom: -10px;
+    z-index: 5;
+}
+
+.header .welcome-button{
+    width: 143px;    
+    padding: 5px 0px;
+    margin: 0 auto;
+    
+    border: 2px solid white;
+    border-radius: 50px;
+    box-shadow: 1px 1px 5px black;
+    
+    /* Font */
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: white;
+    text-shadow: 1px 1px 5px black;
+}
+
+.about-arrows{
+    width: 40px;
+    position: absolute;
+    left: 49%;
+    bottom: 75px;
+    z-index: 1;
+    animation: bounce 0.8s infinite alternate; 
+}
+
+@keyframes bounce{
+    0%{
+        padding-bottom: 25px;
+    	padding-top: 35px;
+        opacity: 1;
+    }
+    
+    100%{
+        padding-bottom: 35px;
+    	padding-top: 25px;
+        opacity: 0;
+    }
+}
+
+/*---- Navbar ----*/
+
+.header .navbar{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 65px;
+    background: rgba(0, 0, 0, 0.68);
+}
+
+.header .navbar:before, .header .navbar:after{
+    content: '';
+    height: 2px;
+    width: 80%;
+    background: #808080;
+}
+
+.header .navbar:before{
+    position: absolute;
+    top: -5px;
+    left: 0;
+}
+
+.header .navbar:after{
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+}
+
+.header ul{
+    display: flex;
+    align-items: center;
+    height: 100%; 
+}
+
+.media-links{
+    float: left;
+    padding-left: 20px !important; /*overrides materialize*/
+}
+
+.media-links li{
+    padding: 0 5px;
+    padding-top: 6px;
+}
+
+.media-links a{
+    display: inline-block;
+    width: 30px;
+}
+
+.media-links li:nth-child(1) a, .media-links li:nth-child(3) a{ /*Linkedin & Instagram logo */
+    width: 25px;
+}
+
+.page-links{
+    float: right;
+    padding-right: 8px;
+}
+
+.page-links li{
+    padding: 0 15px;
+    border-right: 1px solid white;
+}
+
+.page-links a{
+    display: inline-block;
+    padding-bottom: 5;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    font-style: italic;
+}
+
+.page-links a:hover{
+    border-bottom: 2px solid transparent;
+    -webkit-border-image: -webkit-linear-gradient(left, #ee5a24, #f4901e);
+    -o-border-image: -o-linear-gradient(left, #ee5a24, #f4901e);
+    border-image: linear-gradient(to right, #ee5a24, #f4901e);
+    border-image-slice: 1;
+}
+
+.page-links li:nth-child(5){ /* Contact logo */
+    border: none;
+}
+
+.page-links li:nth-child(5) a{ /* Google Maps Link */
+    width: 24px;
+    border: none;
+}
+
+.header .navbar .button-collapse{
+    float: right;
+}
+
+.header .navbar .button-collapse i{
+    font-size: 42px;
+    color: white;
+}
+
+
+/*------------
+    ABOUT (1)
+---------------*/
+
+.about{
+    position: relative; /*anchor */
+    color: #4d4d4d;
+    margin-bottom: 55px;
+}
+
+.about-lines{
+    position: absolute;
+    width: 1400px;
+    top: -1250px;
+    left: -710px;
+    z-index: 1;
+}
+
+.about .row{
+    position: relative; /* anchor */
+}
+
+.about .row .col{
+    position: relative;
+    z-index: 25;
+}
+
+.about .row img{
+    position: absolute;
+    right: -4%;
+    bottom: -110px;
+    width: 150px;
+    opacity: 0.35;
+    z-index: 20;
+}
+
+.about h2{
+    text-align: center;
+    font-weight: 900;
+    margin: 35px 0;
+}
+
+.about p{
+    font-weight: 900;
+    text-align: justify;
+    font-size: 17px;
+}
+
+.about .vid-container{
+    width: 75%;
+    margin: 120px auto 0;
+    height: 400px;
+    position: relative; /*anchor*/
+}
+
+.about .vid-container:before{
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #808080;
+}
+
+.about .video{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 50;
+    background: url('../img/Video-Placeholder.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.about .video .icon{
+    width: 30px; /*Next and Back video Icons */
+}
+
+.about .video .youtube-icon{
+    width: 100px; /*Next and Back video Icons */
+}
+
+
+/*-------------
+    WHY US  (2)
+---------------*/
+
+.work{
+    height: 700px;
+    position: relative;
+}
+
+.work .content{
+    float: left;
+    width: 60%;
+    height: 100%;
+    position: relative; /*anchor */
+    
+    background: -webkit-linear-gradient(top right, #ee5a24, #f4901e);
+    background: -o-linear-gradient(top right, #ee5a24, #f4901e);
+    background: linear-gradient(to bottom left, #ee5a24, #f4901e);
+    
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.work .content div{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.work h2{
+    font-weight: 100;
+}
+
+.work p{
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.work .content:before{
+    content: '';
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: -20px;
+    background: -webkit-linear-gradient(bottom, #f39020, #eb5a26);
+    background: -o-linear-gradient(bottom, #f39020, #eb5a26);
+    background: linear-gradient(to top, #f39020, #eb5a26);
+    opacity: 0.63;
+}
+
+.work .img-container{
+    float: right;
+    width: 40%;
+    height: 100%;
+    background: url('../img/Real-State.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+/*-------------
+    CONTACT (3)
+---------------*/
+
+.contact{
+    background: url('../img/Contact-Background.jpg') no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    color: rgba(255, 255, 255, 0.62);
+    position: relative; /*anchor */
+    z-index: 2;
+}
+
+.contact .lines{
+    position: absolute;
+    width: 1800px;
+    top: -917px;
+    right: -830px;
+    z-index: 25;
+}
+
+.contact .filter{
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.contact .form-container{
+    position: relative;
+    z-index: 50;
+}
+
+.contact h2{
+    margin-bottom: 0;
+    padding: 45px 23px;
+    font-weight: 900;
+    background: rgba(1, 1, 1, 0.8);
+    border-radius: 60px 60px 0px 0px;
+}
+
+.contact form{
+    background: rgba(37, 39, 39, 0.5);
+    padding: 5px 9%;
+    border-radius: 0px 0px 60px 60px;
+}
+
+.contact .form-field{
+    margin-top: 30px;
+    position: relative /*anchor*/
+}
+
+.contact .form-field .input-style{
+    padding-left: 75px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    font-size: 2.2em;
+}
+
+.contact .form-field .input-style:focus{
+    border-bottom: 1px solid #ee5a24;
+    box-shadow: 0 1px 0 0 #ee5a24;
+}
+
+.contact .form-field img{
+    width: 35px;
+    position: absolute;
+    z-index: 55;
+    left: 6px;
+}
+
+.contact .name-icon{
+    top: -10px;
+}
+
+.contact .email-icon{
+    top: 3px;
+}
+
+.contact .phone-icon{
+    top: -4px;
+}
+
+.contact .subject-icon{
+    top: 5px;
+}
+
+.contact .button-send{
+    padding: 5px 60px;
+    border-radius: 50px;
+    border: 0;
+    font-size: 1.5em;
+    margin: 5px 0 28px;
+}
+        
+.contact .button-send:hover{
+    background: -webkit-linear-gradient(top right, #ee5a24, #f4901e);
+    background: -o-linear-gradient(top right, #ee5a24, #f4901e);
+    background: linear-gradient(to bottom left, #ee5a24, #f4901e);
+    color: white;
+    transition: all 0.8s ease;
+}
+
+.contact .button-send:not(:hover){
+    background: rgb(211, 203, 193);
+    color: gray;
+    transition: all 0.8s ease;
+}
+
+/*-------------------
+    EXPECTATIONS (4)
+---------------------*/
+
+.expectations{
+    position: relative; /*anchor */
+    padding: 45px 0;
+}
+
+.expectations .container{
+    border-bottom: 2px solid #808080;
+    border-top: 2px solid #808080;
+    padding: 25px 0;
+    color: #4d4d4d;
+    position: relative;
+    z-index: 50;
+}
+
+.expectations .row{
+    margin: 0;
+}
+
+.expectations .img-container img{
+    display: inline-block;
+    width: 290px;
+}
+
+.expectations .content h2{
+    margin-bottom: 5px;
+}
+
+.expectations .content ul{
+    padding-left: 60px;
+    font-size: 1.2em;
+}
+
+.expectations .content ul img{
+    width: 20px;
+    margin-right: 8px;
+}
+
+/*-------------
+    FOOTER (5)
+---------------*/
+
+.footer{
+    background: url('../img/City-Background.jpg') no-repeat center 180px;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+    position: relative; /*anchor */
+    z-index: 2;
+    /* Needs a relative position. This way the browser knows in what layer does the section belong and avoids flickering while scroll */
+}
+
+.footer .lines{
+    display: inline-block;
+    position: absolute;
+    bottom: -1300px;
+    left: -700px;
+    width: 1800px;
+}
+
+.footer .filter{
+    background: rgba(45, 43, 43, 0.58);
+    padding-bottom: 0;
+}
+
+.footer .container{
+    margin: 40px auto;
+}
+
+.footer img{
+    width: 180px;
+}
+
+.footer .text{
+    text-align: right;
+    font-size: 1.2em;
+    margin-top: 40px;
+}
+
+.footer .text span{
+    font-weight: 900;
+    font-style: italic;
+}
+
+.footer .copyright{
+    background: rgba(21, 20, 20, 0.75);
+    padding: 20px 0;
+    font-size: 1.4em;
+}
+
+
+/*---------------------
+    MATERIALIZE GRID (6)
+-------------------------*/
+
+/**
+<1200px
+<992px
+<750px
+<600px
+<450px
+<360px
+**/
+    
+
+@media only screen and (min-width: 1201px){
+
+    
+}
+
+/** extra large .col .xl **/
+@media only screen and (max-width: 1200px){
+
+}
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){
+    
+    /*-----------
+        ABOUT (1)
+    -------------*/
+    
+    .about-lines{
+        width: 1200px;
+        top: -1080px;
+        left: -700px;
+    }
+    
+    .about .vid-container{
+        width: 90%;
+    }
+    
+    /*-------------
+       CONTACT (3)
+    ---------------*/
+    
+    .contact .lines {
+        width: 2000px;
+        top: -1107px;
+        right: -1280px;
+    }
+}
+
+@media only screen and (max-width: 750px){
+    
+    
+    /*--------------
+       CONTACT (3)
+    ---------------*/
+    
+     .contact .lines {
+        width: 1500px;
+        top: -1000px;
+        right: -950px;
+    }
+    
+    .contact h2 {
+        font-size: 2.5em;
+    }
+    
+    .contact .form-field .input-style {
+        padding-left: 60px;
+        font-size: 1.6em;
+    }
+    
+    /*-------------------
+        EXPECTATIONS (4)
+    ---------------------*/
+    
+    .expectations .img-container{
+        width: 100% !important;
+    }
+    
+    .expectations .img-container img{
+        width: 250px;
+    }
+    
+    .expectations .content{
+        width: 100% !important;
+    }
+    
+    .expectations .content h2{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .expectations .content ul{
+        float: left;
+    }
+    
+    /*-------------
+        FOOTER (5)
+    ---------------*/
+    
+    .footer{
+        background: url('../img/City-Background.jpg') no-repeat center center;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    
+    .footer .img-container{
+        width: 100% !important;
+        text-align: center;
+    }
+    
+    .footer .text{
+        text-align: left;
+    }
+    
+    .footer .row div:nth-child(2){
+        width: 60% !important;
+    }
+    
+    .footer .row div:nth-child(3){
+        width: 40% !important;
+    }
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+    
+    /*-------------
+         ABOUT (1)
+    ---------------*/
+    
+    .about .vid-container{
+        height: 300px;
+    }
+    
+    /*------------
+        WHY US (2)
+    ---------------*/
+    
+    .work .content{
+        width: 70%;
+    }
+    
+    .work .img-container{
+        width: 30%;
+    }
+    
+    /*--------------
+        CONTACT (3)
+    ----------------*/
+    
+    .contact .lines {
+        width: 1560px;
+        top: -1000px;
+        right: -1150px;
+    }
+    
+    /*-------------------
+        EXPECTATIONS (4)
+    ---------------------*/
+    
+    .expectations .content ul{
+        padding-left: 20px;
+    }
+}
+
+@media only screen and (max-width: 450px){
+
+    /*-------------------
+        SCROLL NAVBAR (0)
+    ---------------------*/
+    
+    .scroll-navbar .media-links li {
+        padding: 0px 3px;
+        padding-top: 4px;
+    }
+    
+    .scroll-navbar .media-links a{
+        width: 25px;
+    }
+    
+    .scroll-navbar .media-links li:nth-child(1) a, .scroll-navbar .media-links li:nth-child(3) a{ /*Linkedin & Instagram Logos */
+        width: 21px;
+    }
+    
+    .scroll-navbar .logo a {
+        width: 120px;
+        padding-top: 14px;
+        margin-left: 0px;
+    }
+    
+    .scroll-navbar .button-collapse i {
+        font-size: 33px;
+    }
+    
+    /*-------------
+         ABOUT (1)
+    ---------------*/
+    
+    .about-lines {
+        width: 900px;
+        top: -789px;
+        left: -574px;
+    }
+
+    /*-------------
+        WHY US (2)
+    ---------------*/
+    
+    .work .content{
+        width: 100%;
+    }
+    
+    .work .content:before{
+        display: none;
+    }
+    
+    .work .img-container{
+        display: none;
+    }
+    
+    /*---------------
+        CONTACT (3)
+    ----------------*/
+    
+    .contact .lines {
+        width: 1460px;
+        top: -1010px;
+        right: -1180px;
+    }
+    
+    .contact h2 {
+        font-size: 2.5em;
+    }
+    
+    .contact .form-field .input-style {
+        padding-left: 60px;
+        font-size: 1.6em;
+    }
+    
+    .contact .button-send {
+        padding: 3px 40px;
+        font-size: 1.2em;
+    }
+    
+    /*-------------
+        FOOTER (5)
+    ---------------*/
+    
+    .footer .row div:nth-child(2), .footer .row div:nth-child(3){
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 360px){
+    
+    /*---------------------
+        SCROLL NAVBAR (0)
+    ---------------------*/
+    
+    .scroll-navbar .media-links {
+        padding-left: 10px !important;
+    }
+    
+    .scroll-navbar .logo a {
+        width: auto;
+        padding-top: 10px;
+        margin-left: 0;
+    }
+    
+    .scroll-navbar .logo a:nth-child(1){ /*Small Logo */
+        display: none;
+    }
+    
+    .scroll-navbar .logo a:nth-child(2){ /*Small Logo */
+        display: inline-block;
+        width: 40px;
+    }
+    
+    .scroll-navbar .button-collapse {
+        padding-right: 10px;
+    }
+    
+    /*-------------
+        HEADER (0)
+    ---------------*/
+
+    .header .logo a {
+        padding: 12px;
+        max-width: 215px;    
+        height: 75px;
+    }
+    
+    .header .slogan{
+        font-size: 2.1em;
+        margin: 77.5px auto;
+    }
+    
+    
+    /*-------------------
+        EXPECTATIONS (4)
+    ---------------------*/
+    
+    .expectations .img-container img {
+        width: 180px;
+    }
+    
+    .expectations .content h2 {
+        font-size: 2.8em;
+    }
+    
+    .expectations .content ul{
+        padding-left: 10px;
+    }
+}
+

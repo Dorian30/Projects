@@ -1,0 +1,158 @@
+<?php 
+	session_start();
+
+    if(!isset($_SESSION['typeof_message'])){
+        $typeof_msg = "incorrect";
+        $message = "";
+    }else{
+        $typeof_msg = $_SESSION['typeof_message'];
+        $message = $_SESSION['message'];
+    }
+    
+ ?>
+
+<html>
+<head>
+    <title>Lading Page</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/materialize.css">
+    <link rel="stylesheet" href="css/vegas.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <section class="background">
+       
+        <div class="title">
+            <h1>Looking for a house to buy? Get advise inmediately! </h1>
+            <p>Fill the form with your information and we will get in touch right away.</p>
+        </div>
+        
+		<div class="form-container container">
+            <form class="" action="validar.php" method="post">
+                <div class="row">
+                   
+                    <div class="form-field input-field col s12">
+                        <input class="input-style validate" type="text"  name="name" id="name" placeholder="">
+                        <label for="name" >Name</label>
+                    </div>
+                    
+                    <div class="form-field input-field col s12">
+                        <input class="input-style validate" type="text"  name="last-name" id="last-name" placeholder="">
+                        <label for="last-name">Last Name</label>
+                    </div>
+                    
+                    <div class="form-field input-field col s12">
+                        <select name="type-buyer" id="type-buyer">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="Flip Buyer">Flip Buyer</option>
+                            <option value="Buy and Hold Buyer">Buy and Hold Buyer</option>
+                            <option value="End Buyer">End Buyer</option>
+                        </select>
+                        <label class="">Type of buyer</label>
+                    </div>
+                    
+                    <div class="form-field input-field col s12">
+                        <select name="purchase-with" id="purchase-with">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Hard Money">Hard Money</option>
+                            <option value="Conforming Loan">Conforming Loan</option>
+                        </select>
+                        <label class="">Purchase With</label>
+                    </div>
+                    
+                        
+                    <div class="form-field hdprice-range col s12"> 
+                        <label for="price-range">Price Range</label>
+                        <div class="sub-field">
+                    
+                            <div class="input-field col s6">
+                                <input class="input-style validate" type="number"  name="min-price" id="min-price" placeholder="$ Min" min="1">
+                            </div>
+                        
+                            <div class="input-field col s6">
+                                <input class="input-style validate" type="number"  name="max-price" id="max-price" placeholder="$ Max" min="1">
+                            </div>
+   
+                        </div>
+                    </div>
+                    
+                    <div class="form-field input-field col s12">
+                        <select name="language" id="language">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="English">English</option>
+                            <option value="Spanish">Spanish</option>
+                        </select>
+                        <label class="">Language</label>
+                    </div>
+                    
+                    <div class="form-field input-field col s12">
+                        <input class="input-style validate" type="text"  name="desired-area" id="desired-area" placeholder="">
+                        <label for="desired-area">Desired Area</label>
+                    </div>
+                    
+                    <div class="form-field input-field col s12">
+                        <select name="lead-source" id="lead-source">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="Yard Sign">Yard Sign</option>
+                            <option value="Referral">Referral</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="Purchased">Purchased</option>
+                        </select>
+                        <label class="">Lead Source</label>
+                    </div>
+                    
+                    <div class="form-field input-field col s12">
+                        <textarea name="comments" id="comments" class="comments materialize-textarea input-style" placeholder="" type="text" maxlength="150"></textarea>
+                        <label for="textarea1">Comments</label>
+                    </div>
+                    
+                    <div class="col s12 validator-container">
+                        <p class="validator <?php echo($typeof_msg)?>"><?php
+                                echo $message;
+                            ?></p>
+                    </div>
+                    
+                    <div class="send">
+                        <button type="submit" class="button-send" >SEND</button> 
+                    </div>
+
+                </div> <!-- end row -->
+            </form>
+        </div> <!-- end form container -->
+        
+        
+        <div class="form-container container footer">
+            <div class="row">
+                <div class="col s12">
+                    <img src="img/profile.jpg" width="70" height="70" class="circle">
+                    <p>
+                        Courtesy of<br> Francisco Seijas
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <p>
+                        @Copyright 2017 - Design by Dorian Alvarado
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/vegas.js"></script>
+    <script src="js/script.js"></script>
+    
+    <?php 
+        session_destroy();
+    ?>
+</body>
+</html>

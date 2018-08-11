@@ -1,0 +1,4151 @@
+/*
+
+#DEVELOPED BY: DORIAN ALVARADO. / SITE: 
+#DESIGNED BY: ADDIGRAINS.
+#COPYRIGHT: ADDIGRAINS 2018.
+#MADE WITH MATERIALIZE V1.0 ALPHA AND JQUERY V3.1
+
+*/
+
+/*====================================
+	PAGE GENERAL SETTINGS AND CLASSES 
+=======================================*/
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #365c24; /* Green*/
+}
+
+html{
+	/* Overrides Materialize Roboto font */
+    font-family: "Myriad";
+	/* Note: Materilize html font size is 14px */
+}
+
+/*-- Font Classes --*/
+
+.myriad{
+    font-family: "Myriad";
+}
+
+.myriad-cond{
+    font-family: "MyriadCond";
+    font-weight: bold;
+}
+
+.upper{
+	text-transform: uppercase;
+}
+
+
+/*-- Auxiliary Classes --*/
+
+.active-link{
+    color: #f96611 !important;
+}
+
+.section{
+    padding: 25px 0;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.contact-link{
+    display: inline-block;
+    width: 200px;
+    height: 60px;
+    margin-top: 6px;
+}
+
+span.addigrains{
+	font-weight: bolder;
+	text-transform: uppercase;
+	font-style: italic;
+}
+
+ul.margin{
+	margin-left: 12px;
+}
+
+ul.margin li{
+	margin-bottom: 5px;
+}
+
+.disc-type{
+	margin-left: 30px;
+}
+
+.disc-type li{
+	list-style-type: disc !important;
+	margin-bottom: 5px;
+}
+
+.wrap-text{
+	white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*===========================================
+    LAYOUT GRID (MATERIALIZE) - RESPONSIVE
+
+			>1201px		<1200px
+			<992px		<750px
+			<600px		<450px
+			<360px
+==============================================*/
+
+/*=========================
+	PAGE SELECTED FONTS 
+============================*/
+
+@font-face { /** MYRIAD - BLACK **/
+    font-family: "Myriad";
+    src: url("../fonts/myriad/MyriadPro-Black_0.otf") format("opentype");
+    font-weight: 900;
+}
+
+@font-face { /** MYRIAD - BOLD **/
+    font-family: "Myriad";
+    src: local(Myriad Bold), url("../fonts/myriad/MyriadPro-Bold_0.otf") format("opentype");
+    font-weight: 600;
+}
+
+@font-face { /** MYRIAD - SEMIBOLD **/
+    font-family: "Myriad";
+    src: local(Myriad Semibold), url("../fonts/myriad/MyriadPro-Semibold_0.otf") format("opentype");
+    font-weight: 500;
+}
+
+@font-face { /** MYRIAD - REGULAR **/
+    font-family: "Myriad";
+    src: local(Myriad Regular), url("../fonts/myriad/MyriadPro-Regular.otf") format("opentype");
+    font-weight: 400;
+}
+
+@font-face { /** MYRIAD - LIGHT **/
+    font-family: "Myriad";
+    src: local(Myriad Light), url("../fonts/myriad/MyriadPro-Light_0.otf") format("opentype");
+    font-weight: 100;
+}
+
+@font-face {  /** MYRIAD COND - BOLD **/
+    font-family: "MyriadCond";
+    src: local(Myriad-Cond Bold), url("../fonts/myriad/MyriadPro-BoldCond.otf") format("opentype");
+    font-weight: bold;
+}
+
+@font-face {  /** MYRIAD COND - Regular **/
+    font-family: "MyriadCond";
+    src: local(Myriad-Cond), url("../fonts/myriad/MyriadPro-Cond_0") format("opentype");
+}
+
+@font-face {
+	font-family: 'fontello';
+	src: url('../fonts/fontello.eot');
+	src: url('../fonts/fontello.eot') format('embedded-opentype'),
+	   url('../fonts/fontello.woff2') format('woff2'),
+	   url('../fonts/fontello.woff') format('woff'),
+	   url('../fonts/fontello.ttf') format('truetype'),
+	   url('../fonts/fontello.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+ 
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: "fontello";
+	font-style: normal;
+	font-weight: normal;
+
+	display: inline-block;
+	margin-right: .2em;
+	text-align: center;
+
+	/* For safety - reset parent styles, that can break glyph codes*/
+	font-variant: normal;
+	text-transform: none;
+
+	/* Animation center compensation - margins should be symmetric */
+	/* remove if not needed */
+	margin-left: .2em;
+
+	/* Font smoothing. That was taken from TWBS */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-product-1:before { content: '\e803'; } /* ADITIVOS */
+.icon-product-2:before { content: '\e804'; } /* GANADERIA */
+.icon-product-3:before { content: '\e805'; } /* GRANJAS */
+.icon-product-4:before { content: '\e802'; } /* PREMEZCLAS */
+.icon-product-5:before { content: '\e800'; } /* LAB DIAGNOSTICO */
+.icon-product-6:before { content: '\e801'; } /* MAT PRIMAS */
+.icon-spin-loader:before { content: '\e834'; } 
+.icon-angle-double-left:before { content: '\f100'; } 
+.icon-angle-double-right:before { content: '\f101'; } 
+.icon-angle-double-up:before { content: '\f102'; } 
+.icon-angle-double-down:before { content: '\f103'; } 
+
+/*==================================
+		    SITE NAVBAR  
+==================================*/
+
+/*--------------- 
+     NAVBAR
+-----------------*/
+
+.navbar{
+    background: -webkit-linear-gradient(right, #000 66%, #16330b 81%);
+    background: -o-linear-gradient(right, #000 66%, #16330b 81%);
+    background: linear-gradient(to left, #000 66%, #16330b 81%);
+	/*overrides materialize nav height (64px) */ 
+    height: 85px; 
+    border-bottom: 5px solid #fa6712;
+}
+
+.navbar .nav-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.navbar .sidenav-trigger{
+	margin: 0 18px;	
+}
+
+.navbar .sidenav-trigger, .navbar .sidenav-trigger i{
+	height: 100%;
+}
+
+.navbar .sidenav-trigger i{
+	display: flex;
+	align-items: center;
+    font-size: 33px !important;
+}
+
+.nav-logo{
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+/* Large White Logo */
+.nav-logo>img{
+    width: 150px;
+    height: 58px;
+}
+
+/* Small White Logo */
+.nav-logo img:nth-child(2){
+    display: none;
+}
+
+.navbar .page-links a:not(:hover){
+    color: white;
+    transition: 0.4s;
+}
+
+.navbar .sm-links{
+    display: flex;
+    align-items: center;
+    margin-right: 25px;
+}
+
+.navbar .sm-links a{
+	/* Overrides Materialize Nav line-height */
+	line-height: 1;
+    padding: 0 2.5px;
+}
+
+.navbar .sm-links img{
+    width: 25px;
+}
+
+/*--------------- 
+     SIDENAV 
+-----------------*/
+
+.navbar .sidenav{
+	background: -webkit-linear-gradient(top left, #365c24, #16330b 78%);
+	background: -o-linear-gradient(top left, #365c24, #16330b 78%);
+	background: linear-gradient(to bottom right, #365c24, #16330b 78%);
+}
+
+.navbar .sidenav:after, .navbar .sidenav:before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 30px;
+	z-index: -1;
+}
+.navbar .sidenav:after{
+	background: -webkit-linear-gradient(right, #fa6712, transparent 200%);
+	background: -o-linear-gradient(right, #fa6712, transparent 200%);
+	background: linear-gradient(to left, #fa6712, transparent 200%);
+}
+
+.navbar .sidenav:before{
+	left: 35px;
+	width: 5px;
+	background: #fa6712;
+}
+
+.navbar .sidenav img{
+    display: block;
+    width: 250px;
+    margin: 15px auto;
+}
+
+
+.navbar .sidenav li>a{
+	color: white;
+	font-size: 15px;
+    font-weight: 600;
+	padding: 0 50px;
+}
+
+.navbar .sidenav li>a>i{
+	margin-right: 12px;
+	color: white
+}
+
+.navbar .sidenav li>a>img{
+	margin: 0;
+    margin-right: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(10, 10, 10, 0.88);
+}
+
+.navbar .sidenav .language-list li a{
+	padding: 0 80px;
+}
+
+/*-----------------------
+  RESPONSIVE / SITE NAVBAR
+--------------------------*/
+
+@media only screen and (max-width: 450px){
+	
+   /*----- NAVBAR -----*/
+	
+    .nav-logo>img{
+        display: none
+    }
+
+    .nav-logo img:nth-child(2){
+        display: block;
+        width: 40px;
+        height: 58px;
+        margin-left: -30px;
+    }
+    
+    .navbar .sm-links {
+        margin-right: 18px;
+    }
+}
+
+@media only screen and (max-height: 560px){
+	
+	 /*----- SIDENAV -----*/
+	
+	.navbar .sidenav:after, .navbar .sidenav:before{
+		height: 560px;
+	}	
+}
+
+/*==================================
+    	HEADER (AUX CLASSES)
+==================================*/
+
+.header{
+    width: 100%;
+    height: 530px;
+	/** anchor for bar containers**/
+    position: relative; 
+	z-index: 1;
+}
+
+/*--------------------
+  HEADER BAR AUX CLASSES 
+------------------------*/
+
+/* NOTE: they also works for other sections */
+
+.bars-wrapper{
+	width: 100%;
+	/*positioning and anchor for bar title and bars*/
+    position: absolute;  
+	z-index: 1;
+	
+	color: white;
+    font-size: 35px;
+}
+
+.bar-title{
+	position: relative;
+	z-index: 1;
+}
+
+.bars-wrapper .angle:after, .bars-wrapper .angle:before{
+	content: '';
+	position: absolute;
+	z-index: -1;
+}
+
+.bars-wrapper .bar-title .icon-angle-double-down{
+	color: #54694c;
+	font-size: 60px;
+	animation: bars-icon-bounce 0.8s infinite alternate;
+}
+
+@keyframes bars-icon-bounce{
+	0%{
+		padding-bottom: 0px;
+    	padding-top: 10px;
+    	color: #54694c;
+	}
+	100%{
+		padding-bottom: 10px;
+    	padding-top: 0px;
+    	color: transparent;
+	}
+}
+
+/*-------------------
+  HEADER (AUX) / WITH SLOGAN 
+-----------------------*/
+
+ /** slogan container **/
+.header .content{
+	height: 430px;
+	padding: 0 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.header .content .slogan{
+	font-size: 4em;
+	font-weight: 900;
+    line-height: 1.35em;
+    color: white;
+    text-shadow: -2px 5px 20px #000;
+}
+
+.header .content .slogan-2{
+	display: inline-block; /** limits the size of the background **/
+	padding: 0 7.5px;
+	margin-top: 15px;
+	font-size: 1.3em;
+	font-weight: 700;
+    color: #425e34;
+	background: white;
+	transform: skewX(-10deg);
+}
+
+/*-------------------
+  HEADER (AUX) / WITH TITLE 
+----------------------*/
+
+.header>.icon-angle-double-down{
+    display: inline-block;
+    width: 100%;
+	/* positioning */
+    position: absolute;
+	bottom: 0;
+    z-index: 20;
+    /* font */
+    color: white;
+	font-size: 4em;
+    text-align: center;
+	line-height: 1;
+	animation: header-icon-bounce 0.8s infinite alternate;
+}
+
+@keyframes header-icon-bounce{
+	0%{
+		padding-bottom: 0px;
+    	padding-top: 10px;
+    	color: white;
+	}
+	100%{
+		padding-bottom: 10px;
+    	padding-top: 0px;
+    	color: transparent;
+	}
+}
+
+.header .filter{
+	width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    background: rgba(0, 0, 0, 0.37);
+    background-attachment: fixed;
+    /* positioning */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .title{
+    margin-top: -50px;
+}
+
+.header .title h2{
+	margin-top: 0;
+	padding: 10px 20px;
+    line-height: 1.35;
+	border: 12px solid rgba(255, 255, 255, 0.63);
+    
+	/* font */
+	font-size: 6em;
+	font-weight: 900;
+    color: white;
+	text-shadow: -2px 5px 20px #000;
+	text-transform: uppercase;
+}
+
+.header .title p{
+    color: white;
+    font-size: 1.9em;
+	font-weight: 600;
+    font-style: italic;
+    text-shadow: -2px 5px 20px #000;
+}
+
+/*-------------------------------
+RESPONSIVE / HEADER (AUX CLASSES) 
+----------------------------------*/
+
+@media only screen and (max-width: 992px){
+	
+	/*--- HEADER BAR CLASSES ----*/
+	
+	.bars-wrapper{
+		height: 100px;
+	}
+
+	.bars-wrapper .bar-title{
+		position: absolute;
+		z-index: 5;
+		width: 100% !important;
+		height: 100px !important;
+		padding: 0px !important;
+		
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.bars-wrapper .angle:after, .bars-wrapper .angle:before{
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 750px){
+
+	/*--- HEADER / SLOGAN ---*/
+	
+	 /** slogan container **/
+	.header .content{
+		justify-content: center; 
+		text-align: center;
+		padding: 0 20px;
+	}
+	
+	/*--- HEADER / TITTLE ---*/
+	
+	.header .title h2{
+		font-size: 5.5em;
+	}
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+
+	/*--- HEADER / TITTLE ---*/
+	
+	.header .title h2{
+		font-size: 3.8em;
+		margin-bottom: 12px;
+	}
+	
+}
+
+@media only screen and (max-width: 450px){
+    
+	/*--- HEADER / TITTLE ---*/
+	
+	.header .title h2{
+		font-size: 3em;
+	}
+	
+	.header .title p{
+		font-size: 1.3em;
+	}
+	
+	.products-page>img {
+		bottom: -55px;
+		right: -45px;
+		width: 150px;
+	}
+}
+
+@media only screen and (max-width: 360px){
+    
+    /*--- HEADER BAR CLASSES ----*/
+	
+	.bars-wrapper{
+		font-size: 28px;
+	}
+	
+    .bars-wrapper .bar-title .icon-angle-double-down{
+		font-size: 50px;
+	}
+	
+	.bars-wrapper .bar-title .icon-angle-double-down:before{
+		margin-left: 0;
+	}
+	
+	/*--- HEADER / TITTLE ---*/
+	
+	.header .title h2{
+		font-size: 2.4em;
+		margin-bottom: 12px;
+		padding: 4px 12px;
+		border: 9px solid rgba(255, 255, 255, 0.63);
+	}
+	
+	.header .title p{
+		font-size: 1.1em;
+	}
+}
+
+
+/*==================================
+		FORM (AUX CLASSES) 
+==================================*/
+
+/* Own input style to override materialize default input style */
+form .input-field .input-style{
+    box-sizing: border-box;
+    padding: 6.5px 10px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    height: auto;
+    background: white;
+    color: #555;
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+/*==================================
+	  SUSCRIBE GENERAL SECTION
+==================================*/
+
+.suscribe{
+    padding-top: 120px;
+	/*anchor*/
+	position: relative;
+	z-index: 1;
+}
+
+.suscribe .bars-wrapper {
+    left: 0;
+    top: 0;
+}
+
+.suscribe .bars-wrapper .bar-1{
+    height: 50px;
+	background: #203f12;
+}
+
+.suscribe .bars-wrapper .bar-title{
+	position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 5;
+    width: 630px;
+    height: 50px;
+    background: #16330b;
+    display: flex;
+    align-items: center;
+    padding: 25px 0 0 260px;
+}
+
+.suscribe .bars-wrapper .angle:after{
+	left: 473px;
+    border-bottom: 46px solid transparent;
+    border-left: 157px solid #16330b;
+}
+
+.suscribe .bars-wrapper .angle:before{
+	left: 0;
+    border-bottom: 46px solid transparent;
+    border-right: 473px solid #16330b;
+}
+
+.suscribe .bars-wrapper .angle:after,
+.suscribe .bars-wrapper .angle:before{
+	border-top: 5px solid #16330b; 
+	top: 45px;
+}
+
+
+/* responsive tablet img */ 
+.suscribe .tablet-img{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+}
+
+.suscribe .form-info{
+    text-align: center;
+    color: white;
+    font-size: 1.8em;
+    margin-top: 20px;
+    margin-bottom: -10px;
+}
+
+.suscribe form{
+	/* Helps to inspect the form since all the inputs
+	has been floated by the .col class */
+    overflow: hidden;
+}
+
+/* input-field: every section with an input */
+.suscribe .input-field{
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.suscribe .input-field label{
+	font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+	/* Color to override Materialize labels color */
+    color: white;
+}
+
+/* label focus color */
+.suscribe .input-field input[type=text]:focus + label{
+    color: #fa6712;
+}
+
+/* label underline focus color */
+.suscribe .input-field input[type=text]:focus{
+    border-bottom: 1px solid #fa6712;
+    box-shadow: 0 1px 0 0 #fa6712;
+}
+
+.suscribe-logo{
+	display: inline-block;
+    width: 200px;
+    height: 50px;
+    background: url('../img/suscribe-button-orange.svg') no-repeat;
+    border: none;
+	cursor: pointer;
+}
+
+.suscribe-logo:focus{
+    background-color: transparent; /*overrides materialize effect.*/
+}
+
+/*----------------------------
+ RESPONSIVE / SUSCRIBE SECTION
+----------------------------------*/
+
+@media only screen and (min-width: 1201px){
+	.suscribe .container {
+		width: 95%;
+	}
+}
+
+/** extra large .col .xl **/
+@media only screen and (max-width: 1200px){
+
+    .suscribe .tablet-img{
+        width: 350px;
+    }
+    
+    .suscribe .container{
+        width: 90%;
+    }
+}
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){
+	
+	.suscribe .bars-wrapper .bar-1{
+		display: none;
+	}
+
+    .suscribe .tablet-img{
+        display: none;
+    }
+    
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+    
+    /*------ SUSCRIBE ------*/
+    .suscribe{
+        height: auto;
+        padding-top: 135px;
+    }
+    
+    .suscribe .form-info{
+        font-size: 1.4em;
+        margin: 4px;
+        font-weight: 500;
+    }
+    
+    .suscribe .input-field{
+        margin: 10px 0;
+    }
+    
+    .suscribe .input-field .input-style{
+        margin: 0;
+    }
+    
+    .suscribe-logo{
+        margin-top: 10px;
+    }
+    
+}
+
+@media only screen and (max-width: 450px){
+    
+    .suscribe .form-info{
+        font-size: 1.3em;
+        margin: 4px;
+        font-weight: 500;
+    }
+    
+}
+
+/*==================================
+	   		  FOOTER 
+==================================*/
+
+.page-footer{
+	background: #203f12;
+}
+
+.page-footer .container{
+	margin-top: 5px;
+}
+
+
+.page-footer .container .row{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.page-footer .container .col{
+	display: flex;
+	align-items: center;
+    justify-content: center;		
+}
+
+
+.page-footer .container .row>div img{
+	width: 230px;
+}
+
+.page-footer .footer-copyright{
+	background: rgba(22, 51, 11, 0.8);
+	color: white;
+}
+
+.page-footer .footer-copyright .container{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.page-footer .footer-copyright ul{
+	display: flex;
+}
+
+.page-footer .footer-copyright ul img{
+	margin: 0 2px;
+}
+
+/*----------------------------
+ RESPONSIVE / SUSCRIBE SECTION
+----------------------------------*/
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){
+	
+	.page-footer .container .col{
+		margin-bottom: 20px;
+	}
+
+	.page-footer .container .col:last-child{
+		margin: 0;
+	}
+    
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+    
+    .footer-icons{
+    	float: left;
+    	clear: left;
+    	width: 100%;
+    	display: flex;
+    	align-items: center;
+    	margin-top: 5px;
+    }
+    
+}
+
+/*==================================
+	 		  HOME (P1)
+==================================*/
+
+/*----------------
+     HOME HEADER 
+------------------*/
+
+.home-header{
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.home-header .bars-wrapper{
+	bottom: 0;
+	left: 0;
+}
+
+ .home-header .bars-wrapper .bar-1{
+	width: 100%;
+    height: 80px;
+	background: rgba(22, 51, 11, 0.53);
+}
+
+ .home-header .bars-wrapper .bar-2{
+	width: 100%;
+    height: 40px;
+	background: #16330b;
+}
+
+.home-header .bars-wrapper .angle:after{
+    left: 0;
+    top: -46px;
+    border-top: 46px solid transparent;
+    border-right: 145px solid #16330b;
+}
+
+.home-header .bars-wrapper .angle:before{
+	left: 145px;
+    top: -46px;
+	border-top: 46px solid transparent;
+    border-left: 455px solid #16330b;
+}
+
+.home-header .bars-wrapper .angle:after, .home-header .bars-wrapper .angle:before{
+	border-bottom: 5px solid #16330b; 
+}
+
+.home-header .bars-wrapper .bar-title{
+	width: 600px;
+    height: 80px;
+	position: absolute;
+	right: 0;
+    top: 0;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	padding-left: 90px;
+	background: #16330b;
+}
+
+/*----------------------------
+ RESPONSIVE / HOME (P1) / HEADER 
+----------------------------------*/
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){
+	
+	 .home-header .bars-wrapper .bar-1{
+		display: none;
+	}
+
+	 .home-header .bars-wrapper .bar-2{
+		display: none;
+	}
+    
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+	
+	/** slogan container **/
+	.home-header .content .slogan{
+		font-size: 3.4em;
+	}
+	
+	.home-header .content .slogan-2 {
+		font-size: 1.2em;
+	}
+}
+
+@media only screen and (max-width: 450px){
+	
+	/** slogan container **/
+	.home-header .content .slogan{
+		font-size: 3em;
+	}
+	
+	.home-header .content .slogan-2 {
+		font-size: 1.1em;
+	}
+}
+
+@media only screen and (max-width: 360px){
+	
+	/** slogan container **/
+	.home-header .content .slogan{
+		font-size: 2.5em;
+	}
+}
+
+/*-------------------
+   HOME PRODUCTS LIST
+---------------------*/
+
+.section.home-products-list{
+    width: 100%;
+    height: auto;
+	color: white;
+	/* Anchor for section angle */
+    position: relative; 
+    
+}
+
+/*section left green angle */
+.prod-angle{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 100%;
+    transform: skewX(10deg);
+    background: #16330b;
+    margin-left: -60px;
+}
+
+.home-products-list .col{
+	/* overrides materialize .col margin */
+    margin: 12.5px 0;
+    padding: 0 1.4rem; 
+}
+
+.home-products-list .content{
+    margin-bottom: 15px;
+	/* fixes height from floated element */
+    overflow: hidden; 
+}
+
+.home-products-list .content a{
+    color: white;
+    display: block;
+	/* fixes height from floated element */
+    overflow: hidden; 
+}
+
+/*products logo*/
+.home-products-list .content a i{
+    float: left;
+	font-size: 50px;
+	line-height: 1.1em;
+}
+
+.home-products-list .content a i:before{
+	margin: 0;
+}
+
+/*products logo animation when hovering*/
+.home-products-list .content a:hover i{
+     transform:rotateY(360deg); 
+     transition: all 1s ease;
+}
+
+.home-products-list .content h2{
+    line-height: 1.2;
+    font-weight: 500;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    /* positioning */
+    padding-left: 60px;
+    padding-top: 8px;
+    margin: 0;
+}
+
+/* Premezclas */
+.home-products-list .col:nth-child(1) h2{
+	padding-top: 15px;
+}
+
+.home-products-list .content + p{
+    padding: 10px;
+    border: 1px solid #a6ada6;
+	text-align: justify;
+    font-size: 0.85em;
+}
+
+.home-products-list .content + p>a{
+	color: #f96712;
+	font-weight: 900;
+}
+
+.home-products-list .footer{
+    margin-bottom: 0; 
+}
+
+.home-products-list .footer p{
+    font-size: 1.2em;
+    padding: 0 10px;
+}
+
+/*----------------------------
+ RESPONSIVE / HOME (P1) / PRODUCTS
+----------------------------------*/
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){
+    
+    .prod-angle{
+        display: none;
+    }
+}
+
+/*-------------------
+   PRODUCTS MODALS
+---------------------*/
+
+.modal{
+	background: #365c24;
+	color: white;
+}
+
+.modal .modal-content{
+    background: -webkit-linear-gradient(top left, transparent, #16330b 78%);
+    background: -o-linear-gradient(top left, transparent, #16330b 78%);
+    background: linear-gradient(to bottom right, transparent, #16330b 78%);
+    padding: 24px;
+}
+
+.modal .modal-content i{
+    display: block;
+	text-align: center;
+    font-size: 50px;
+	line-height: 1;
+	 margin-bottom: 9px;
+}
+
+.modal .modal-content i:before{
+	margin: 0;
+}
+
+.modal .modal-content .icon-product-1{
+	color: #009fe2;
+}
+
+.modal .modal-content .icon-product-2{
+	color: #009fe2;
+}
+
+.modal .modal-content .icon-product-3{
+	color: #00af52;
+}
+
+.modal .modal-content .icon-product-4{
+	color: #5db9a5;
+}
+
+.modal .modal-content .icon-product-5{
+	color: #f96712;
+}
+
+.modal .modal-content .icon-product-6{
+	color: #94ce32;
+}
+
+.modal .modal-content h4{
+	margin: 0;
+	text-align: center;
+    color: white;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.modal .modal-content p {
+	text-align: justify;
+	margin: 15px 0;
+}
+
+.modal .modal-footer{
+	height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f96712;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    font-weight: 900;
+	color: white;
+}
+
+
+/*--------------------------
+   HOME CAROUSEL (ACTUALIDAD) 
+-----------------------------*/
+
+.home-carousel{
+	height: 570px;
+    background: url('../img/home-carousel-background.jpg') no-repeat center center; 
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative; /* Anchor */
+    z-index: 1;
+	/*prevents any side effect because of the section angle */
+    overflow: hidden; 
+}
+
+/* carousel gray filter */
+.home-carousel:before {
+    height: 100%;
+    width: 100%;
+    content: '';
+    position: absolute;
+    opacity: 0.36;
+    background: #9E9E9E;
+}
+
+/* right orange angle */
+.home-carousel .angle{
+    width: 100px;
+    height: 100%;
+	position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: skewX(-8deg);
+    background: #fa6712;
+    margin-right: -73px;
+}
+
+.home-carousel .filter{
+    background: -webkit-linear-gradient(bottom, white, transparent 50%);
+    background: -o-linear-gradient(bottom, white, transparent 50%);
+    background: linear-gradient(to top, white, transparent 50%);
+    height: 100%;
+}
+
+/* carousel arrow buttons */
+.home-carousel .angle-carousel{
+	height: 100%;
+    position: absolute;
+    z-index: 105;
+    display: flex;
+    align-items: center;
+    font-size: 3.5em;
+	color: white;
+}
+
+.home-carousel .angle-carousel.icon-angle-double-right{
+    top: 0;
+    right: 0;
+    padding-right: 30px;
+}
+
+.home-carousel .angle-carousel.icon-angle-double-left{
+    top: 0;
+    left: 0;
+    padding-left: 30px;
+}
+
+.home-carousel .angle-carousel.icon-angle-double-right:hover,
+.home-carousel .angle-carousel.icon-angle-double-left:hover{
+	cursor: pointer;
+}
+
+.home-carousel .carousel.carousel-slider{
+    padding: 0;
+	/*overrides material carousel-slider height*/
+    height: 100% !important; 
+}
+
+.home-carousel .sub-h2{
+	font-weight: 500;
+    text-shadow: -2px 5px 20px #000;
+    color: white;
+	margin-bottom: 0;
+    margin-top: 0.55em;
+}
+
+.home-carousel .carousel .container{
+    position: relative; /*anchor*/
+    height: 100%; /* helps the inspection with CDT */
+    color: black;
+}
+
+.home-carousel .carousel .container .row{
+	/* Needs to be moved in order to be after the 
+	title .sub-h2 */
+    position: absolute;
+    top: 105px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.home-carousel .carousel .col{
+	/*overrides materialize margin: auto*/
+    margin-left: 0 !important; 
+}
+
+.home-carousel .carousel .carousel-item{
+    width: 100% !important;
+}
+
+/* Image white border */ 
+.home-carousel .carousel-item .img-border{
+    display: inline-block;
+    width: 125px;
+    height: 125px;
+    border: 5px solid white;
+}
+
+.home-carousel .carousel-item h3{
+    font-weight: 700;
+    font-size: 3em;
+    margin: 15px 0;
+}
+
+.home-carousel .carousel-item p{
+    font-weight: 600;
+    font-size: 17px !important;
+    text-align: center;
+}
+
+.home-carousel .carousel-item .button-link{
+    color: #fa6712;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.home-carousel .carousel .button-link:not(:hover){
+    color: #fa6712;
+    transition: 0.4s;
+}
+
+.home-carousel .carousel .button-link:hover{
+    color: #d4570e;
+    transition: 0.4s;
+}
+
+/*----------------------------
+ RESPONSIVE / HOME (P1) / CAROUSEL
+----------------------------------*/
+
+/** extra large .col .xl **/
+@media only screen and (max-width: 1200px){
+    
+	.home-carousel .carousel-item h3{
+		font-size: 2.7em;
+	}
+}
+
+@media only screen and (max-width: 750px){
+    
+    .home-carousel .carousel-item h3{
+        font-size: 2.4em;
+    }
+    
+    .home-carousel .carousel-item p{
+        font-size: 15px !important;
+    }
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+	
+	.home-carousel .angle{
+        display: none;
+    }
+	
+	.home-carousel .angle-carousel.icon-angle-double-left,
+	.home-carousel .angle-carousel.icon-angle-double-right {
+		padding: 0;
+	}
+	
+	.home-carousel .sub-h2{
+		margin-top: 0.85em;
+    	font-size: 3em;
+	}
+	    
+	.home-carousel .carousel-slider .container .col{
+        padding: 0 2rem;
+    }
+}
+
+@media only screen and (max-width: 360px){
+
+	.home-carousel .carousel-item h3 {
+		font-size: 2.1em;
+	}
+	
+	.home-carousel .angle-carousel{
+        font-size: 3.5em;
+    }
+}
+
+/*--------------------------
+   HOME CONTACT SECTION 
+-----------------------------*/
+
+.home-contact{
+    background: url('../img/home-contact-background.jpg') no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+    position: relative; /*anchor*/
+	z-index: 1;
+}
+
+.home-contact:before{
+    height: 100%;
+    width: 100%;
+    content: '';
+    position: absolute;
+    z-index: -1;
+    opacity: 0.46;
+    background: #000000;
+}
+
+.home-contact .filter{
+    background: -webkit-linear-gradient(#fa6712, transparent 140%);
+    background: -o-linear-gradient(#fa6712, transparent 140%);
+    background: linear-gradient(#fa6712, transparent 140%);
+}
+
+.home-contact .angle{
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 100%;
+    transform: skewX(10deg);
+    background: #365c24;
+    margin-left: -60px;
+}
+
+.home-contact h2{
+    letter-spacing: 13px;
+    font-size: 3em;
+    margin-bottom: 30px;
+}
+
+.home-contact .data{
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.home-contact .data img,
+.home-contact .sm-links img{
+    float: left;
+    width: 48px;
+    height: 48px;
+}
+
+.home-contact .data img + p{
+    padding-left: 65px;
+	font-size: 1em;
+    font-weight: 500;
+}
+
+.home-contact .sm-links{
+    margin-top: 35px;
+    display: flex;
+}
+
+.home-contact .sm-links li{
+    margin-right: 20px;
+}
+
+.home-contact .sm-links a{
+    overflow: hidden;
+    display: block;
+}
+
+.home-contact .googlemap{
+    position: relative; /*anchor*/
+}
+
+.home-contact .mapwraper{
+    margin: 100px auto 0;
+    width: 90%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.home-contact .mapwraper iframe{
+    height: 250px;
+    width: 100%;
+}
+
+.home-contact .googlemap img{
+    display: inline-block;
+    position: absolute;
+    width: 208px;
+    height: 111px;
+    top: 14px;
+    left: 165px;
+}
+
+.footer small{
+    display: block;
+    margin-top: 20px;
+    color: black;
+    font-size: 1.1em;
+}
+
+/*----------------------------
+ RESPONSIVE / HOME (P1) / CONTACT
+----------------------------------*/
+
+@media only screen and (min-width: 1201px){
+    
+    .home-contact .container{
+        width: 85%;
+    }
+    
+}
+
+/** extra large .col .xl **/
+@media only screen and (max-width: 1200px){
+    
+    .home-contact .container{
+        width: 90%;
+    }
+    
+    .home-contact .angle{
+        display: none;
+    }
+}
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){
+    
+    .home-contact .info{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .home-contact .info h2{
+        width: 100%;
+        text-align: center;
+    }
+    
+    .home-contact .info .data{
+        width: 50%;
+        padding: 0;
+        padding-left: 20px;
+    }
+    
+    .home-contact .sm-links{
+        margin-top: 0;
+        padding: 0;
+        padding-left: 20px;
+    }
+    
+    .home-contact .mapwraper{
+        width: 100%;
+    }
+    
+    .home-contact .mapwraper iframe{
+        height: 350px;
+    }
+    
+}
+
+@media only screen and (max-width: 750px){
+    
+    .home-contact .container{
+        width: 94%;
+    }
+    
+    .home-contact .mapwraper iframe{
+        height: 268px;
+    }
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+ 
+    .home-contact h2{
+        font-size: 2.5em;
+    }
+    
+    .home-contact .info .data{
+        width: 100%;
+    }
+    
+    .home-contact .mapwraper{
+        margin-top: 115px;
+    }
+    
+    .home-contact .googlemap img{
+        top: 30px;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    
+    .home-contact .mapwraper {
+        margin-top: 87px;
+    }
+    
+    .home-contact .googlemap img {
+        width: 177px;
+        height: 130px;
+        top: 0px;
+        left: 132px;
+    }
+    
+}
+
+@media only screen and (max-width: 360px){
+    
+    .home-contact .info h2 {
+        letter-spacing: 10px;
+        font-size: 2.25em;
+    }
+    
+    .home-contact .mapwraper {
+        margin-top: 30px;
+    }
+    
+    .home-contact .googlemap img {
+        display: none;
+    }
+}
+
+/*==============================
+	 	  ABOUT (P2)
+=================================*/
+
+/*----------------------
+		ABOUT HEADER 
+------------------------*/
+
+.about-header{
+	background: url('../img/addigrains-group.jpg') no-repeat center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+/* header filter */
+.about-header:before {
+    height: 100%;
+    width: 100%;
+    content: '';
+    position: absolute;
+    opacity: 0.15;
+    background: #000;
+}
+
+.about-header .bars-wrapper{
+	bottom: 0;
+	left: 0;
+}
+
+.about-header .bars-wrapper .bar-1{
+	height: 80px;
+	background: rgba(152, 155, 152, 0.79);
+}
+
+.about-header .bars-wrapper .bar-2{
+	width: 100%;
+    height: 40px;
+	background: #16330b;
+}
+
+.about-header .bars-wrapper .bar-3{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	height: 80px;
+	width: 600px;
+	background: #16330b;
+}
+
+.about-header .bars-wrapper .angle:after{
+    left: 0;
+    top: -46px;
+    border-top: 46px solid transparent;
+    border-right: 145px solid #16330b;
+}
+
+.about-header .bars-wrapper .angle:before{
+	left: 145px;
+    top: -46px;
+	border-top: 46px solid transparent;
+    border-left: 455px solid #16330b;
+}
+
+.about-header .bars-wrapper .angle:after,
+.about-header .bars-wrapper .angle:before{
+	border-bottom: 5px solid #16330b; 
+}
+
+.about-header .bars-wrapper .bar-title{
+	height: 80px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	padding-left: 115px;
+	font-weight: 600;
+	font-size: 2em;
+}
+
+.about-header .bars-wrapper .bar-title span {
+    font-weight: 400;
+    padding-left: 14px;
+}
+
+/*----------------------------
+ RESPONSIVE / ABOUT (P2) / HEADER
+----------------------------------*/
+
+
+/** extra large .col .xl **/
+@media only screen and (max-width: 1200px){
+
+    .about-header .bars-wrapper .bar-title{
+        font-size: 1.7em;
+        padding-left: 190px;
+    }
+    
+}
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){  
+	
+	.about-header .bars-wrapper .bar-1,
+	.about-header .bars-wrapper .bar-2,
+	.about-header .bars-wrapper .bar-3{
+		display: none;
+	}
+	
+	.about-header .bars-wrapper .bar-title{
+        font-size: 1.6em;
+		background: #16330b;
+    }
+	
+    .about-header .bars-wrapper .bar-title span{
+        padding-left: 8px;
+    }
+}
+
+@media only screen and (max-width: 750px){
+    
+    .about-header .bars-wrapper .bar-title{
+        font-size: 1.2em;
+    }
+
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+	
+    .about-header .bars-wrapper .bar-title{
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    
+    .about-header .bars-wrapper .bar-title{
+        font-size: 0.7em;
+    }
+    
+}
+
+/*----------------------
+		ABOUT INFO 
+------------------------*/
+
+.section.about{
+    background: white;
+    color: #6F7075;
+    text-align: justify;
+    position: relative; /*anchor for angles */
+	z-index: 1;
+}
+
+/* about angles */
+.section.about:after, .section.about:before{
+	content: '';
+    position: absolute;
+    z-index: -1;
+}
+
+.section.about:after{
+    top: 0;
+    left: 0;
+    border-left: 311px solid #d8d9d9;
+    border-bottom: 69px solid transparent;
+}
+
+.section.about:before{
+	bottom: 0;
+	right: 0;
+	border-right: 311px solid #d8d9d9;
+    border-top: 69px solid transparent;
+}
+
+.section.about h3{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+
+    font-size: 1.9em;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+.section.about .first-p{
+    margin-bottom: 18px;
+}
+
+.section.about p{
+    font-size: 1.3em;
+    line-height: 1.2;
+}
+
+/*-------------------------------
+ RESPONSIVE / ABOUT (P2) / INFO
+----------------------------------*/
+
+@media only screen and (max-width: 450px){
+
+    .section.about h3{
+        font-size: 1.8em;
+        line-height: 1.2;
+    }
+    
+    .section.about p {
+        font-size: 1.2em;
+    }
+    
+}
+
+@media only screen and (max-width: 750px){
+    
+    .section.about:after{
+		border-left: 190px solid #d8d9d9;
+		border-bottom: 40px solid transparent;
+	}
+
+	.section.about:before{
+		border-right: 190px solid #d8d9d9;
+		border-top: 40px solid transparent;
+	}
+}
+
+/*----------------------
+		ABOUT TEAMS 
+------------------------*/
+
+.about-team-list{
+    margin: 0% 3.5%;
+    display: block;
+}
+
+.about-team-list .team-addigrains{
+    width: 30%;
+    margin-right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-team-list .team-addigrains a{
+    display: inline-block;
+    margin-top: 15px;
+    width: 190px;
+}
+
+.about-team-list .section-container,
+.about-team-list .team-elements{
+    color: #fff;
+    display: flex;
+}
+
+.about-team-list .team-elements{
+    width: 100%;
+}
+
+.about-team-list .team{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.about-team-list .team p{
+    margin: 5px 0;
+    letter-spacing: 2px;
+}
+
+.about-team-list .team a{
+    color: #fff !important;
+    display: inline-block;
+}
+
+/* team ventas */
+.about-team-list .team-1{
+    background:  rgba(255, 205, 0, 0.4) ;
+}                
+
+/* team laboratorio */
+.about-team-list .team-2{
+    background: rgba(39, 156, 216, 0.4);
+}                
+
+/* team produccion */
+.about-team-list .team-3{
+    background: rgba(175, 202, 4, 0.4);
+}                
+
+/* team administracion */
+.about-team-list .team-4{
+    background: rgba(238, 117, 40, 0.4);
+}                
+
+/* team logistica */
+.about-team-list .team-5{
+    background: rgba(68, 37, 131, 0.4);
+}
+
+/*-------------------------------
+ RESPONSIVE / ABOUT (P2) / TEAM
+----------------------------------*/
+
+
+@media only screen and (min-width: 1201px){
+
+    .about-team-list .container{
+        display: none;
+
+    }
+    .about-team-list .team-1,
+	.about-team-list .team-2,
+	.about-team-list .team-3,
+	.about-team-list .team-4,
+	.about-team-list .team-5{  
+        width: 20%;
+    }   
+
+}
+
+/** extra large .col .xl **/
+@media only screen and (max-width: 1200px){
+
+    .about-team-list .team-elements{
+        display: none;
+    }
+}
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){  
+
+    .about-team-list .section-container,
+	.about-team-list .team-elements{
+        flex-direction: column;
+        align-items: center;
+        margin-right: 0;
+    }
+    
+    .about-team-list .team-addigrains{
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+    
+    .about-team-list .container{
+        width: 95%;
+    }
+}
+
+/*----------------------
+	  ABOUT VISION
+------------------------*/
+
+.about-vision{
+    width: 100%;
+    background: #fff;
+    color: #6f6f6e;
+    display: flex;
+    overflow: hidden;
+}
+
+.about-vision-img{
+    background: url(../img/about-vision.jpg) no-repeat -667px center;
+    background-size: cover;
+    width: 30%;
+    height: 493px;
+}
+
+.about-vision .content{
+    width: 70%;
+    padding: 5px 40px;
+}
+
+.about-vision h3{
+    font-size: 60px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.about-vision h3, 
+.about-vision span{
+    font-weight: bold;
+}
+
+.about-vision p, 
+.about-vision .list{
+    font-size: 1.3em;
+    line-height: 1.3;
+    text-align: justify;
+    color: rgba(111, 111, 110, 0.9);
+}
+
+.about-vision .first-p{
+    margin-bottom: 22px;
+}
+
+.about-vision .second-p{
+    padding-bottom: 28px;
+    border-bottom: 3px solid #d1d2d4;
+}
+
+.about-vision .third-p{
+    margin-top: 20px;
+}
+
+.about-vision .list{
+    display: flex;
+    padding-left: 20px;
+}
+
+.about-vision ul:not(.browser-default),
+.about-vision  ul:not(.browser-default) > li  {
+    list-style: disc !important;
+}
+
+.about-vision ul{
+    margin-right: 80px;
+}
+
+/*-------------------------------
+ RESPONSIVE / ABOUT (P2) / VISION
+----------------------------------*/
+
+/** extra large .col .xl **/
+@media only screen and (max-width: 1200px){
+    
+    .about-vision-img{
+        width: 25%;
+    }
+
+    .about-vision .content{
+        width: 75%;
+    }
+    
+}
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){  
+    
+    .about-vision-img{
+        display: none;
+    }
+
+    .about-vision .content{
+        width: 100%;
+        margin-bottom: 30px;
+    }   
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+
+    .about-vision .list{
+        display: block;
+        padding-left: 26px;
+        padding-top: 5px;
+        text-align: left;
+    }
+}
+
+/*--------------------------------
+	ABOUT STATEMENT (FILOSOFIA)
+---------------------------------*/
+
+.about-statement{
+    background: url('../img/about-addigrains-team-work.jpg') no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+}
+
+.about-statement .filter{
+    background: linear-gradient(to bottom, #fa6712, transparent 140%);
+    padding: 90px 0;
+}
+
+.about-statement h3{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.about-statement p{
+    padding: 20px 45px;
+    width: 70%;
+    margin: auto;
+    border: 1px solid white;
+    font-size: 1.2em;
+}
+
+.about-statement p span{
+    font-weight: 700;
+}
+
+/*-------------------------------
+ RESPONSIVE / ABOUT (P2) / STATEMENT
+----------------------------------*/
+
+@media only screen and (max-width: 750px){
+
+    .about-statement h3{
+        font-size: 2.3em;
+    }
+    
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+
+    .about-statement p {
+        padding: 20px 25px;
+    }
+}
+
+/*--------------------------------
+	ABOUT ADDIGRAINS ALLIES 
+---------------------------------*/
+
+.about-allies{
+    background: #ffffff;
+    position: relative; /*anchor*/
+    padding-top: 150px;
+}
+
+.about-allies .bars-wrapper{ /** green bars container **/
+    top: 0;
+}
+
+.about-allies .bars-wrapper .bar-1{
+    background: #5f7357;
+    height: 50px;   
+}
+
+.about-allies .bar-title{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 5;
+    width: 638px;
+    height: 50px;
+    background: #16330b;
+    display: flex;
+    align-items: center;
+	padding: 20px 0px 0 115px;
+}
+
+.about-allies .angle:after{
+	right: 0;
+    bottom: -55px;
+    border-bottom: 55px solid transparent;
+    border-left: 470px solid #16330b;
+}
+
+.about-allies .angle:before{
+	left: 0;
+    bottom: -55px;
+    border-right: 168px solid #16330b;
+    border-bottom: 55px solid transparent;
+}
+
+.about-allies .angle:after, 
+.about-allies .angle:before{
+	border-top: 5px solid #16330b; 
+}
+
+.allies-container{   
+/*	width: 90%;*/
+	max-width: 1215px;
+    margin: auto;
+    height: 220px;
+}
+
+.allies-container img, .allies-container .double-img{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 25px;
+}
+
+.allies-container .double-img{
+    position: relative;
+	z-index: 1;
+}
+
+.allies-container .double-img img{
+    margin: 0;
+    width: 100%;
+}
+
+.allies-container .double-img img:nth-child(1){
+    position: relative;
+	z-index: 1;
+    top: -25px;
+    margin-bottom: 25px;
+}
+
+.allies-container .double-img img:nth-child(2){
+    position: relative;
+	z-index: 1;
+    bottom: -25px;
+}
+
+.allies-container .ally1
+{
+    width: 10%;
+}
+
+.allies-container .ally23{
+    width: 20%;
+}
+
+.allies-container .ally4{
+    width: 12%;
+}
+
+.allies-container .ally56{
+    width: 15%;
+}
+
+.allies-container .ally56 img:nth-child(2){
+    bottom: 20px;
+    right: -150px;
+}
+
+.allies-container .ally7{
+    position: relative;
+    top: -50px;
+    right: -90px;
+}
+
+.allies-container-2{
+    height: 280px;
+    width: 90%;
+    margin: auto;
+}
+
+.allies-container-2 .owl-carousel div {
+    width: 100%;
+}
+
+.allies-container-2 .owl-carousel .owl-item {
+    height: 250px;
+    display: flex;
+    align-items: center;
+}
+
+/*-------------------------------
+ RESPONSIVE / ABOUT (P2) / ALLIES
+----------------------------------*/
+
+@media only screen and (min-width: 1201px){
+    
+    /*------ ALIADOS ---*/
+    .allies-container-2{
+        display: none;
+    }
+
+}
+
+
+/** extra large .col .xl **/
+@media only screen and (max-width: 1200px){
+    
+    /*------ ALIADOS ---*/
+    .allies-container{
+        display: none;
+    }
+    
+    .about-allies{
+        padding-top: 115px;
+    }
+}
+
+
+/*-----------------
+  PRODUCTS LOGO COLOR 
+---------------------*/
+
+/* Premezclas */
+.home-products-list .col:nth-child(1) i,
+.products-page .list-button:nth-child(1).active i{
+	color: #5db9a5;
+}
+
+/* Aditivos */
+.home-products-list .col:nth-child(2) i,
+.products-page .list-button:nth-child(2).active i{
+	color: #009fe2;
+}
+
+/* Mat Primas */
+.home-products-list .col:nth-child(3) i,
+.products-page .list-button:nth-child(3).active i{
+	color: #94ce32;
+}
+
+/* Prod Granjas */
+.home-products-list .col:nth-child(4) i,
+.products-page .list-button:nth-child(4).active i{
+	color: #00af52;
+}
+
+/* Prod Ganaderia */
+.home-products-list .col:nth-child(5) i,
+.products-page .list-button:nth-child(5).active i{
+	color: #009fe2;
+}
+
+/* Lab Diagnostico */
+.home-products-list .col:nth-child(6) i,
+.products-page .list-button:nth-child(6).active i{
+	color: #f96712;
+}
+
+
+/*==============================
+	 	  PRODUCTS (P3)
+=================================*/
+
+/*----------------------
+   PRODUCTS PAGE HEADER 
+------------------------*/
+
+.products-header{
+	background: url('../img/home-slide2.jpg') no-repeat center center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+/*--------------------- 
+	PRODUCTS PAGE INFO 
+-----------------------*/
+
+.products-page{
+	background: white;
+	/* to contain floated list */
+	overflow: hidden;
+	/* anchor */
+	position: relative;
+	z-index: 1;
+}
+
+.products-page>img{
+    position: absolute;
+    z-index: 5;
+    bottom: -110px;
+    right: -90px;
+    width: 300px;
+    opacity: 0.45;
+}
+
+/*--------------------
+  	PRODUCTS PAGE LIST
+----------------------*/
+
+/* products list section */
+.products-page .list{
+	float: left;
+	padding: 40px 0;
+	padding-left: 15px;
+	width: 350px;
+	font-size: 16px;
+    font-weight: 600;
+	background: #9bad92;
+}
+
+/* section green lines */
+.products-page .list:after, .products-page .list:before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	width: 20px;
+	height: 100%;
+	background: #325620;
+}
+
+.products-page .list:before{
+	left: 25px;
+	width: 5px;
+}
+
+/* collapsibles section */
+.products-page .info{
+	width: 100%;
+	padding-left: 350px;
+}
+
+/* products list section background */
+.products-page .info:before{
+	content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 350px;
+    height: 100%;
+    background: #9bad92;
+    z-index: -1;
+}
+
+.products-page .list .row{
+	margin: 0;
+}
+
+.products-page .list .row ul{
+	/* to contain all products links since they are 
+	floated 'cause of the .col class */
+	overflow: hidden;
+}
+
+.products-page .list-button{
+	display: inline-block;
+	width: 100%;
+	height: 48px;
+    display: flex;
+    align-items: center;
+	color: rgba(60, 60, 60, 0.9);
+}
+
+.products-page .list-button i{
+	line-height: 1em;
+	font-size: 2em;
+}
+
+.products-page .list-button i:before{
+	margin: 0.3em;
+	margin-left: 0.8em;
+}
+
+.products-page .list-button:hover{
+	background: #e4e4e4;
+}
+
+.products-page .list-button:not(hover){
+/*	background: #f2f2f3;*/
+	background: white; 
+}
+
+.products-page .list-button.active{
+	background: linear-gradient(to bottom right, #365c24, #16330b 78%);
+	background: #325620;
+	color: white;
+}
+
+/* Products list color transition. */
+/*Note: They share the same color css rules with 
+produts home list logos  */
+
+.products-page .list-button:hover,
+.products-page .list-button.active i{transition: all 0.3s ease;}
+
+
+/*----------------------------------
+  RESPONSIVE / PRODUCTS (P3) / LIST
+-----------------------------------*/
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){
+	
+	.products-page .list{
+		width: 100%;
+		position: relative;
+	}
+	
+	.products-page .list .row{
+		text-align: center;
+	}
+	
+	.products-page .list .row ul{
+		display: inline-block;
+		width: 630px;
+	}
+	
+	.products-page .list-button i:before{
+		margin-left: 0.6em;
+	}
+	
+	.products-page .info{
+		float: left;
+		padding-left: 0;
+	}
+	
+	.products-page .info:before{
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 750px){
+
+	.products-page .list .row ul{
+		width: 420px;
+	}
+	
+	.products-page .list .row .col{
+		width: 50%;
+	}
+	
+}
+
+@media only screen and (max-width: 600px){
+
+	.products-page .list {
+    	padding-left: 23px;
+	}
+
+	.products-page .list .row ul {
+		width: 370px;
+	}
+	
+	.products-page .list-button i:before {
+		margin-left: 0.25em;
+	}
+}
+
+@media only screen and (max-width: 450px){
+	
+	.products-page .list {
+    	padding-left: 26px;
+	}
+	
+	.products-page .list .row ul{
+		width: 210px;
+	}
+	
+	.products-page .list .row .col{
+		width: 100%;
+	}
+	
+	.products-page .list-button i:before {
+		margin-left: 0.6em;
+	}
+
+}
+
+@media only screen and (max-width: 360px){
+
+	.products-page .list .row ul{
+		width: 180px;
+	}
+	
+	.products-page .list-button i:before {
+    	margin-left: 0.15em;
+	}
+}
+
+/*------------------------
+  	PRODUCTS COLLAPSIBLES
+----------------------------*/
+
+.products-page .collapsibles-wrapper{
+	padding: 40px 50px;
+	display: none;
+}
+
+.products-page .collapsibles-wrapper.active{
+	display: block;
+}
+
+.products-page .collapsibles-wrapper h3{
+	height: 51px;
+	text-transform: uppercase;
+    margin-top: 0;
+    padding: 10px 15px;
+    font-size: 2em;
+    font-weight: 600;
+    color: white;
+    display: inline-block;
+    background: #fa6712;
+    position: relative;
+}
+
+.products-page .collapsibles-wrapper h3:before{
+	content: '';
+    position: absolute;
+    top: 0;
+    right: -35px;
+    border-bottom: 51px solid #fa6712;
+    border-right: 35px solid transparent;
+}
+
+.products-page .collapsibles-wrapper h3:after{
+	content: '';
+    width: 5px;
+    height: 100%;
+    background: #fa6712;
+    transform: skewX(34.5deg);
+    position: absolute;
+    top: 0;
+    right: -28px;
+}
+
+.products-page .collapsible-header{
+	text-transform: uppercase;
+	position: relative;
+	display: flex;
+    align-items: center;
+	font-weight: 600;
+	padding-right: 45px;
+}
+
+.products-page .collapsible-header img{
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+.products-page .collapsible-header i{
+	position: absolute;
+	z-index: 1;
+	right: 0;
+	top: 30%;
+}
+
+.products-page .collapsible-body span{
+	margin-right: 5px;
+	font-weight: bold;
+}
+
+
+/*--------------------------------------------
+  RESPONSIVE / PRODUCTS (P3) / COLLAPSIBLES
+--------------------------------------------*/
+
+@media only screen and (max-width: 600px){
+	
+	.products-page .collapsibles-wrapper{
+		padding: 40px 20px;
+	}
+	
+}
+
+/*==============================
+	 	  LABORATORY (P4)
+=================================*/
+
+/*----------------------
+   	LAB PAGE HEADER 
+------------------------*/
+
+.lab-header{
+	background: url('../img/lab-background.jpg') no-repeat center center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+/*--------------------- 
+	LAB PAGE INFO 
+-----------------------*/
+
+.lab-page{
+	background: white;
+	/* to contain floated list */
+	overflow: hidden;
+	/* anchor */
+	position: relative;
+	z-index: 1;
+}
+
+.lab-page> img.logo{
+	display: none;
+    position: absolute;
+    z-index: 5;
+    bottom: -110px;
+    right: -90px;
+    width: 300px;
+    opacity: 0.45;
+}
+
+.lab-page img.banner{
+	float: right;
+	width: calc(100% - 350px);
+	max-width: 750px;
+}
+
+/*--------------------
+  	LAB PAGE LIST
+----------------------*/
+
+/* products list section */
+.lab-page .list{
+	float: left;
+	padding: 40px 0;
+	padding-left: 15px;
+	width: 350px;
+	font-size: 16px;
+    font-weight: 600;
+	text-align: center;
+	background: #9bad92;
+}
+
+.lab-page .list>img{ /* lab logo */
+	margin-bottom: 25px;
+}
+
+/* section green lines */
+.lab-page .list:after,
+.lab-page .list:before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	width: 20px;
+	height: 100%;
+	background: #325620;
+}
+
+.lab-page .list:before{
+	left: 25px;
+	width: 5px;
+}
+
+/* collapsibles section */
+.lab-page .info{
+	width: 100%;
+	padding-left: 350px;
+}
+
+/* products list section background */
+.lab-page .info:before{
+	content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 350px;
+    height: 100%;
+    background: #9bad92;
+    z-index: -1;
+}
+
+.lab-page .list .row{
+	margin: 0;
+}
+
+.labs-page .list .row ul{
+	/* to contain all products links since they are 
+	floated 'cause of the .col class */
+	overflow: hidden;
+}
+
+.lab-page .list-button{
+	display: inline-block;
+	width: 100%;
+	height: 48px;
+    display: flex;
+    align-items: center;
+	color: rgba(60, 60, 60, 0.9);
+}
+
+.lab-page .list-button:hover{
+	background: #e4e4e4;
+}
+
+.lab-page .list-button:not(hover){
+/*	background: #f2f2f3;*/
+	background: white; 
+}
+
+.lab-page .list-button.active{
+	background: linear-gradient(to bottom right, #365c24, #16330b 78%);
+	background: #325620;
+	color: white;
+}
+
+.lab-page .list-button .img{
+	background: url('../img/addigrains-logo-green-small.png') no-repeat center center;
+	background-size: cover; 
+	height: 30px;
+    width: 30px;
+	line-height: 1em;
+	margin: 0.5em;
+	margin-left: 0.8em;
+}
+
+.lab-page .list-button.active .img{
+	background: url('../img/addigrains-logo-white-small.svg') no-repeat center center;
+}
+
+/* Products list color transition. */
+/*Note: They share the same color css rules with 
+produts home list logos  */
+
+.lab-page .list-button:hover,
+.lab-page .list-button.active img{transition: all 0.3s ease;}
+
+/*----------------------------------
+  RESPONSIVE / LAB (P4) / LIST
+-----------------------------------*/
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){
+	
+	.lab-page .list{
+		width: 100%;
+		position: relative;
+	}
+	
+	.lab-page .list .row{
+		text-align: center;
+	}
+	
+	.lab-page .list .row ul{
+		display: inline-block;
+		width: 630px;
+	}
+	
+	.lab-page .info{
+		float: left;
+		padding-left: 0;
+	}
+	
+	.lab-page .info:before{
+		display: none;
+	}
+	
+	.lab-page img.banner{
+		width: 100%;
+		max-width: 750px;
+	}
+}
+
+@media only screen and (max-width: 750px){
+
+	.lab-page .list .row ul{
+		width: 420px;
+	}
+	
+	.lab-page .list .row .col{
+		width: 50%;
+	}
+	
+	.lab-page img.logo{
+		display: block;
+	}
+	
+	.lab-page img.banner{
+		display: none;
+	}
+
+}
+
+@media only screen and (max-width: 600px){
+
+	.lab-page .list {
+    	padding-left: 23px;
+	}
+
+	.lab-page .list .row ul {
+		width: 370px;
+	}
+}
+
+@media only screen and (max-width: 450px){
+	
+	.lab-page .list {
+    	padding-left: 26px;
+	}
+	
+	.lab-page .list .row ul{
+		width: 210px;
+	}
+	
+	.lab-page .list .row .col{
+		width: 100%;
+	}
+
+}
+
+@media only screen and (max-width: 360px){
+
+	.lab-page .list .row ul{
+		width: 180px;
+	}
+}
+
+/*------------------------
+  		LAB INFO
+----------------------------*/
+
+.lab-page .content{
+	padding: 40px 50px;
+	display: none;
+}
+
+.lab-page .content.active{
+	display: block;
+}
+
+.lab-page .content h3{
+	text-transform: uppercase;
+    margin-top: 0;
+	margin-bottom: 25px;
+    font-size: 2.4em;
+    font-weight: 600;
+    color: #252525;
+    display: inline-block;
+    position: relative;
+}
+
+.lab-page .content h3:before{
+	content: '';
+    position: absolute;
+    z-index: 1;
+    bottom: -5px;
+    left: 0;
+    height: 2px;
+    width: 80px;
+    background: #fa6712;
+}
+
+.lab-page .content h3:after{
+	content: '';
+    position: absolute;
+    z-index: 1;
+    bottom: -12px;
+    left: 0;
+    height: 2px;
+    width: 40px;
+    background: #fa6712;
+}
+
+.lab-page .content .text{
+	margin-bottom: 15px;
+    font-size: 1.1em;
+    text-align: justify;
+}
+
+.lab-page .content ul.text{
+	padding-left: 35px;
+}
+
+.lab-page .content .text li{
+	list-style-type: disc;
+}
+
+
+/*--------------------------------
+  	   RESPONSIVE / LAB (P4) 
+----------------------------------*/
+
+@media only screen and (max-width: 600px){
+	
+	.lab-page .content{
+		padding: 40px 20px;
+	}
+	
+}
+
+/*==============================
+	  LABORATORY / TESTS (P4.1)
+=================================*/
+
+.lab-page .tests img{
+	margin: 0.4em;
+    margin-left: 0.8em;
+	width: 35px;
+}
+
+.lab-page .tests i{
+	margin: 0.4em;
+    margin-left: 0.8em;
+    color: #325620;
+}
+
+/*------------------------
+  	TESTS COLLAPSIBLES
+----------------------------*/
+
+.lab-page .collapsibles-wrapper{
+	padding: 40px 50px;
+	display: none;
+}
+
+.lab-page .collapsibles-wrapper.active{
+	display: block;
+}
+
+.lab-page .collapsibles-wrapper h3{
+	height: 51px;
+	text-transform: uppercase;
+    margin-top: 0;
+    padding: 10px 15px;
+    font-size: 2em;
+    font-weight: 600;
+    color: white;
+    display: inline-block;
+    background: #fa6712;
+    position: relative;
+}
+
+.lab-page .collapsibles-wrapper h3:before{
+	content: '';
+    position: absolute;
+    top: 0;
+    right: -35px;
+    border-bottom: 51px solid #fa6712;
+    border-right: 35px solid transparent;
+}
+
+.lab-page .collapsibles-wrapper h3:after{
+	content: '';
+    width: 5px;
+    height: 100%;
+    background: #fa6712;
+    transform: skewX(34.5deg);
+    position: absolute;
+    top: 0;
+    right: -28px;
+}
+
+.lab-page .collapsible-header{
+	text-transform: uppercase;
+	position: relative;
+	display: flex;
+    align-items: center;
+	font-weight: 600;
+	padding-right: 45px;
+}
+
+.lab-page .collapsible-header img{
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+.lab-page .collapsible-header i{
+	position: absolute;
+	z-index: 1;
+	right: 0;
+	top: 30%;
+}
+
+.lab-page .collapsible-body p{
+	margin-bottom: 15px;
+}
+
+.lab-page .collapsible-body span{
+	margin-right: 5px;
+	font-weight: bold;
+}
+
+
+/*------------------------------------------------
+   RESPONSIVE / LAB TESTS (P4.1) / COLLAPSIBLES
+-------------------------------------------------*/
+
+@media only screen and (max-width: 600px){
+	
+	.lab-page .collapsibles-wrapper{
+		padding: 40px 20px;
+	}
+	
+}
+
+
+/*==============================
+	 	  BLOG (P5)
+=================================*/
+
+.section.blog .pages-desktop{
+    padding: 0 1.4rem;
+}
+
+section.blog .pagination{
+    background: rgba(37, 37, 37, 0.12);
+    padding: 10px;
+}
+
+section.blog .pagination li.active {
+    background-color: #1e5d37;
+}
+
+section.blog .pages-mobile{
+    display: none;
+}
+
+.post-container .angle-container a, .addigrains a{
+    font-weight: 500;
+}
+
+/*----- HEADER ----*/
+
+.blog-header .icon-angle-down{
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+    font-size: 2.2em;
+    animation: bounce-about 0.8s infinite alternate;
+    position: absolute;
+    z-index: 20;
+    bottom: 0;
+    color: white;
+    text-align: center;
+}
+
+@keyframes bounce-about{
+	0%{
+		padding-bottom: 25px;
+    	padding-top: 35px;
+    	color: white;
+	}
+	100%{
+		padding-bottom: 35px;
+    	padding-top: 25px;
+    	color: transparent;
+	}
+}
+
+.blog-header .filter{
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    background: rgba(0, 0, 0, 0.37);
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blog-header .content{
+    margin-top: -50px;
+}
+
+.blog-header .content h2{
+    line-height: 1.35;
+    margin-top: 0;
+    color: white;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 6em;
+    border: 12px solid rgba(255, 255, 255, 0.63);
+    padding: 10px 20px;
+    text-shadow: -2px 5px 20px #000;
+}
+
+.blog-header .content p{
+    color: white;
+    font-size: 1.9em;
+    font-style: italic;
+    font-weight: 900;
+    text-shadow: -2px 5px 20px #000;
+}
+
+
+.blog-header .vid-container{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: url('../../img/actualidad-header.jpg') no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.blog-header .vid-container video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+/*----- BLOG ----*/
+
+.section.blog{
+    background: #f2f2f2;
+}
+
+.section.blog .container{
+    width: 95%;
+}
+
+.section.blog .col{
+    padding: 0 1.4rem;
+}
+
+.section.blog .col.news{
+    padding-left: 2rem;
+    padding-right: 0;
+}
+
+.blog .post-container, .blog .news-container{
+    background: white;
+    height: 100%;
+    box-shadow: 2px 2px rgba(128, 128, 128, 0.5);
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+/*--------------- 
+    BLOG POSTS
+-----------------*/
+
+.post-container h2{
+    text-transform: uppercase;
+    color: #fa6712;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 0px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #dcd9d9;
+}
+
+.post-container .banner{
+    width: 100%;
+}
+
+.post-container .thumbail{
+	float: left;
+    margin: 5px 10px;
+}
+
+.post-container .thumbail img{
+	border-radius: 50%;
+	width: 120px;
+    height: 105px;
+}
+
+.post-container .post-text{
+    margin: 10px 0 25px;
+    text-align: justify;
+    color: #5e5e5e;
+	padding-left: 145px;
+}
+
+.post-container .angle-container{
+    position: relative; /* anchor */
+    text-align: right;
+}
+
+.post-container .angle-container a{
+    position: relative;
+    top: -16px;
+    left: 43px;
+    display: inline-block;
+    padding: 7px 18px;
+    background: #fa6712;
+    color: white;
+}
+.post-container .angle-container a:after{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border-top: 18px solid rgba(250, 103, 18, 0.5);
+    border-right: 21px solid transparent;
+}
+
+.post-footer{
+    border-top: 1px solid #dcd9d9;
+    position: relative; /* anchor */
+    padding-top: 10px;
+    color: #252525;
+    font-weight: 400;
+}
+
+.post-footer p{
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    line-height: 1.3;
+}
+
+.post-footer i{
+    display: inline-block;
+    width: 100%;
+}
+
+.post-footer .logo{
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    margin: 5px;
+}
+/*--------------- 
+    BLOG NEWS
+-----------------*/
+
+/*---- ABOUT ADDIGRAINS ----*/
+
+.news-container h2{
+    text-transform: uppercase;
+    color: #fa6712;
+    font-size: 1.7em;
+    font-weight: 700;
+    margin-top: 0px;
+}
+
+.news-container h2 + img{
+    width: 75%;
+    margin: 0 auto;
+    display: block;
+}
+
+.addigrains p{
+    text-align: justify;
+    color: #5e5e5e;
+    margin: 20px 0;
+}
+
+.addigrains .about{
+    text-transform: uppercase;
+    display: block;
+    padding: 10px 25px;
+    background: #fa6712;
+    color: white;
+    width: 100px;
+    margin: 0 auto;
+}
+
+/*---- SUSCRIBE ----*/
+
+.news-container.subscribe h2{
+    margin-bottom: 8px;
+}
+
+.news-container.subscribe .input-field{
+    margin: 8px 0;
+}
+
+.section.blog .col.input-field{
+    padding: 0 1rem;
+}
+
+.news-container.subscribe .input-style{
+    margin: 0;
+    box-sizing: border-box;
+    border: 2px solid rgba(93, 91, 91, 0.69);
+    padding: 6.5px 10px;
+    height: auto;
+    font-weight: 600;
+    color: #555;
+    text-align: center;
+}
+
+/* label underline focus color */
+.news-container.subscribe .input-field input[type=text]:focus{
+    border: 2px solid #587e46; 
+    box-shadow: 0 0px 0 0 ;
+}
+
+.news-container.subscribe .suscribe-logo{
+    width: 170px;
+    height: 38px;
+    margin-top: 8px;
+}
+
+/*---- TWITTER ----*/
+
+.news-container.twitter{
+    padding-bottom: 0;
+}
+
+.news-container.twitter h2{
+	margin-bottom: 0;
+}
+
+@media only screen and (min-width: 1201px){
+    
+	/*--------------- 
+		BLOG POSTS
+	-----------------*/
+	
+    .section.blog .col.posts{
+        width: 70%;
+    }
+	
+	/*--------------- 
+		BLOG NEWS
+	-----------------*/
+    
+    .section.blog .col.news{
+        width: 27%;
+    }
+    
+}
+
+
+/** extra large .col .xl **/
+@media only screen and (max-width: 1200px){
+	
+	/*--------------- 
+		BLOG POSTS
+	-----------------*/
+      
+    .section.blog .col.posts{
+        width: 70%;
+    }
+	
+	/*--------------- 
+		BLOG NEWS
+	-----------------*/
+    
+    .section.blog .col.news{
+        width: 27%;
+        
+    }
+}
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){  
+    
+	/*--------------- 
+		BLOG POSTS
+	-----------------*/
+	
+    .section.blog .col.posts{
+        width: 65%;
+    }
+	
+	.post-container .thumbail{
+		float: none;
+		text-align: center;
+		width: 100%;
+		margin: 0;
+	}
+	
+	.post-container .post-text{
+		padding-left: 0;
+	}
+	
+	/*--------------- 
+		BLOG NEWS
+	-----------------*/
+    
+    .section.blog .col.news{
+        width: 32%;
+    }
+    
+}
+
+@media only screen and (max-width: 750px){
+	
+	/*--------------
+		 BLOG 
+	------------*/
+	
+	/*---- HEADER ----*/
+	
+	.blog-header .content h2{
+		font-size: 5.5em;
+	}
+	
+	.section.blog .pages-desktop{
+        display: none;
+    }
+    
+    .section.blog .pages-mobile{
+        display: block;
+    }
+    
+	/*--------------- 
+		BLOG POSTS
+	-----------------*/
+	
+    .section.blog .col.posts{
+        width: 100%;
+    }
+    
+    .post-footer p{
+        width: 100%;
+        text-align: left;
+		margin-bottom: 4px;
+    }
+
+    .post-footer i{
+        display: inline-block;
+        width: auto;
+        margin-right: 8px;
+		vertical-align: bottom;
+    }
+	
+	/*--------------- 
+		BLOG NEWS
+	-----------------*/
+	
+	 .section.blog .col.news{
+        width: 100%;
+        padding: 0 1.4rem;
+    }
+	
+	 .blog .news-container{
+        margin-top: 25px;
+    }
+    
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+
+    /*--------------
+		 BLOG 
+	------------*/
+	
+	/*---- HEADER ----*/
+	
+	.blog-header .content h2{
+		font-size: 3.8em;
+		margin-bottom: 12px;
+	}
+	
+	.blog-header .content p span{
+		display: none;
+	}
+	
+	/*--------------- 
+		BLOG POSTS
+	-----------------*/
+	
+	.post-container h2 {
+		font-size: 1.5em;
+	}
+	
+}
+
+@media only screen and (max-width: 450px){
+    
+    /*--------------
+		 BLOG 
+	------------*/
+	
+	/*---- HEADER ----*/
+	
+	.blog-header .content h2{
+		font-size: 3em;
+	}
+	
+	.blog-header .content p{
+		font-size: 1.3em;
+	}
+}
+
+@media only screen and (max-width: 360px){
+    
+	/*--------------
+		 BLOG 
+	------------*/
+	
+	/*---- HEADER ----*/
+	
+	.blog-header .content h2{
+		font-size: 2.4em;
+		margin-bottom: 12px;
+		padding: 4px 12px;
+		border: 9px solid rgba(255, 255, 255, 0.63);
+	}
+	
+	.blog-header .content p{
+		font-size: 1.1em;
+	}
+	
+	/*--------------- 
+		BLOG POSTS
+	-----------------*/
+	
+	.post-container h2 {
+		font-size: 1.2em;
+	}
+	
+	.post-container .post-text {
+		font-size: 0.9em;
+	}
+	
+	/*--------------- 
+		BLOG NEWS
+	-----------------*/
+	
+	.news-container h2 {
+		font-size: 1.3em;
+	}
+	
+	.addigrains p {
+		font-size: 0.9em;
+	}
+	
+}
+
+/*------------------ 
+    BLOG ARTICLES
+--------------------*/
+
+.bold-text{
+    font-weight: 700;
+}
+
+.margin-list{
+	margin: 10px;
+}
+
+.post-container.article{
+    overflow: hidden;
+    padding: 25px !important;
+}
+
+.article .title-container{
+    color: #fa6712;
+    line-height: 18px;
+    margin-bottom: 20px;
+}
+
+.article .title-container a{
+    display: inline-block;
+}
+
+.article .title-container img{
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    margin-right: 10px;
+}
+
+.article .title, .article .subtitle, .article .author{
+    margin: 0;
+    border: 0;
+    padding-bottom: 0;
+    text-transform: uppercase;
+    color: #fa6712;
+    font-weight: 700;
+}
+
+.article .title{
+    line-height: 36px;
+    margin-top: 9px;
+	font-size: 2em;
+}
+
+.article .subtitle{
+    line-height: 24px;
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.article .author{
+    margin-top: 8px;
+    font-size: 16px;
+    text-transform: inherit;
+}
+
+.article .content{
+    color: #5e5e5e;
+    text-align: justify;
+}
+
+.article .content .paragraph{
+    margin-bottom: 15px;
+}
+
+.article .content .paragraph.list .p-title{
+	margin-top: 10px;
+}
+
+.article .content .check-list{
+	color: #17300f;
+	margin: 0 8px;
+}
+
+.article .paragraph .p-title{
+    display: block;
+}
+
+.article .content .img-container{
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.article .content .fig-container{
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.article .content .img-container img, .article .content .fig-container img{
+    display:inline-block; 
+    width: 100%;
+}
+
+.article .content .fig-container .title{
+    margin: 9px auto;
+    width: 90%;
+    text-align: center;
+    color: #fa6712;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.back-button{
+    text-align: right;
+}
+
+.back-button .button{
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 10px 25px;
+    background: #fa6712;
+    color: white;
+}
+
+@media only screen and (max-width: 450px){
+    
+    .article .title-container img {
+		width: 45px;
+		height: 45px;
+	}
+}
+
+@media only screen and (max-width: 360px){
+	
+    .article .content .paragraph {
+		font-size: 0.9em;
+	}
+	
+	
+}
+
+/*==============================
+	 	  CONTACT US (P6)
+=================================*/
+
+/*----------------
+   CONTACT HEADER 
+------------------*/
+
+.contact-header{
+	background: url('../img/contact-background.jpg') no-repeat center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.contact-header .bars-wrapper{
+	bottom: 0;
+	left: 0;
+}
+
+ .contact-header .bars-wrapper .bar-1{
+	width: 100%;
+    height: 80px;
+	background: rgba(22, 51, 11, 0.53);
+}
+
+ .contact-header .bars-wrapper .bar-2{
+	width: 100%;
+    height: 40px;
+	background: #16330b;
+}
+
+.contact-header .bars-wrapper .angle:after{
+    left: 0;
+    top: -46px;
+    border-top: 46px solid transparent;
+    border-right: 145px solid #16330b;
+}
+
+.contact-header .bars-wrapper .angle:before{
+	left: 145px;
+    top: -46px;
+	border-top: 46px solid transparent;
+    border-left: 455px solid #16330b;
+}
+
+.contact-header .bars-wrapper .angle:after,
+.contact-header .bars-wrapper .angle:before{
+	border-bottom: 5px solid #16330b; 
+}
+
+.contact-header .bars-wrapper .bar-title{
+	width: 600px;
+    height: 80px;
+	position: absolute;
+	right: 0;
+    top: 0;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	padding-left: 90px;
+	background: #16330b;
+}
+
+
+/*----------------------------
+ RESPONSIVE / CONTACT (P6) / HEADER 
+----------------------------------*/
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){
+	
+	.contact-header .bars-wrapper .bar-1,
+	.contact-header .bars-wrapper .bar-2{
+		display: none;
+	}
+    
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+	
+	/** slogan container **/
+	.contact-header .content .slogan{
+		font-size: 3.4em;
+	}
+	
+	.contact-header .content .slogan-2 {
+		font-size: 1.2em;
+	}
+}
+
+@media only screen and (max-width: 450px){
+	
+	/** slogan container **/
+	.contact-header .content .slogan{
+		font-size: 3em;
+	}
+	
+	.contact-header .content .slogan-2 {
+		font-size: 1.1em;
+	}
+}
+
+@media only screen and (max-width: 360px){
+	
+	/** slogan container **/
+	.contact-header .content .slogan{
+		font-size: 2.5em;
+	}
+}
+
+/*----------------------------
+   CONTACT FORM & CARD INFO 
+------------------------------*/
+
+.contact-us{
+	position: relative; /*anchor */
+	overflow: hidden;
+}
+
+.contact-us.section{
+	padding-top: 45px;
+}
+
+.contact-us .angle-left, .contact-us .angle-right{
+	position: absolute;
+	z-index: -2;
+    width: 100px;
+    height: 100%;
+    transform: skewX(-8deg);
+    background: #fa6712;
+}
+
+.contact-us .angle-left{
+	left: 0;
+    bottom: 0;
+	margin-left: -73px;
+}
+
+.contact-us .angle-right{
+    right: 0;
+    bottom: 0;
+    margin-right: -73px;
+}
+
+
+/*--- FORM ----*/
+
+.contact-us .input-field{
+	margin-top: 20px;
+	margin-bottom: 0;
+}
+
+.contact-us.section .input-field label,
+.contact-us form .btn{
+	text-transform: capitalize;
+    font-weight: 700;
+    color: white;
+    font-size: 18.5px !important;
+    font-style: italic;
+}
+
+.contact-us form .btn{
+	font-size: 16px !important;
+}
+
+.contact-us.section .input-field .input-style{
+	box-sizing: border-box;
+    padding: 6.5px 10px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    height: auto;
+    background: white;
+    color: #555;
+    font-size: 16px;
+    text-align: left;
+	border-color: transparent;
+}
+
+.contact-us.section .input-field textarea.input-style{
+	height: 6rem;
+}
+
+.contact-us.section .input-field input[type=text]:focus, .contact-us.section .input-field textarea:focus {
+    border-bottom: 1px solid #fa6712;
+    box-shadow: 0 1px 0 0 #fa6712;
+	outline: none;
+}
+
+.contact-us.section .input-field input[type=text]:focus + label, .contact-us.section .input-field textarea:focus + label{
+    color: white;
+}
+    
+.contact-us.section .btn{
+	margin: 10px .75rem 0;
+	background: #fa6712;
+	font-style: normal;
+	text-transform: uppercase;
+}
+
+/*---- LOCATION -----*/
+
+.contact-us .location{
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+	
+}
+
+.contact-us .location .card-title{ 
+	/*Overrides materialize card class */
+	line-height: 40px !important;
+	font-weight: normal;
+	font-size: inherit;
+}
+
+.contact-us .location .card{ 
+	/*Overrides materialize card class */
+	background: transparent;
+	margin: 0; 
+    transition: none; 
+    border-radius: 0; 
+	box-shadow: none;
+	margin: -10px -.75rem 0;
+}
+
+.contact-us .location .card-reveal img{
+	display: block;
+    max-width: 80px;
+    margin: 0 auto 10px;
+}
+
+.contact-us .location .btn{
+	z-index: 3;
+}
+
+.contact-us .location .btn.btn-floating i{
+	line-height: 40px;
+}
+
+.contact-us .location .card-content .content,
+.contact-us .location .card-reveal .content{ /*Overrides materialize card class */
+	background: -webkit-linear-gradient(top left, transparent, #16330b 78%);
+	background: -o-linear-gradient(top left, transparent, #16330b 78%);
+	background: linear-gradient(to bottom right, transparent, #16330b 78%);
+	padding: 0;
+}
+
+.contact-us .location .card-reveal,
+.contact-us .location .card-content{
+	background: #365c24;
+	padding: 0; /*Overrides materialize padding */
+}
+
+.contact-us .location .card-reveal .content{
+	padding: 15px;
+	height: 100%;
+}
+
+.contact-us .location .card-content .content{
+	padding: 15px;
+	height: 100%;
+	text-align: left;
+}
+
+.contact-us .location .card-content .content h3{
+	margin-bottom: 15px;
+}
+
+.contact-us .location .card-content .info{
+	margin: 10px 0;
+	overflow: hidden;
+}
+
+.contact-us .location .card-content .info i{
+	font-size: 2.75em;
+}
+
+.contact-us .location .card-content p{
+	padding-left: 0px;
+}
+
+.contact-us .location .content{
+	position: relative; /*anchor for card-title */
+    width: 100%;
+	color: white; /*#565555*/ 
+	text-align: center;
+	padding: 10px;
+	padding-bottom: 25px;
+}
+
+.contact-us .location .content h3{
+	margin: 0;
+	margin-bottom: 3px;
+    font-weight: 900;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+.contact-us .location .card-action{
+	padding: 0;
+}
+
+.contact-us .location .card-action .map{
+	width: 100%;
+	height: 190px;
+	position: relative;
+	margin-bottom: -6px;
+}
+
+/*---------------------------------------------
+ RESPONSIVE / CONTACT (P6) / FORM & CARD INFO 
+----------------------------------------------*/
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){  
+    
+	.contact-us form{
+		margin-bottom: 40px;
+	}
+    
+}
+
+/*-------------------------------------
+    LAYOUT GRID (6) - RESPONSIVE 
+-------------------------------------*/
+
+/**
+>1201px
+<1200px
+<992px
+<750px
+<600px
+<450px
+<360px
+**/
+    
+
+@media only screen and (min-width: 1201px){
+    
+}
+
+/** extra large .col .xl **/
+@media only screen and (max-width: 1200px){
+
+}
+
+/** large .col .l **/
+@media only screen and (max-width: 992px){
+
+}
+
+@media only screen and (max-width: 750px){
+
+}
+
+/** medium .col .m **/
+@media only screen and (max-width: 600px){
+
+
+}
+
+@media only screen and (max-width: 450px){
+	
+
+
+}
+
+@media only screen and (max-width: 360px){
+
+
+}
