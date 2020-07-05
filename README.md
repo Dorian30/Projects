@@ -1,2 +1,5 @@
 # Projects
-Web apps developed with HTML, CSS, Javascript, jQuery, PHP &amp; MySQL for clients as freelance and web developer using Bootstrap and Materialize as frameworks for the responsive layout. 
+
+This an old repository with a set of projects I did back then when I started web development around 2017. 
+
+Developed with HTML, CSS, Javascript, jQuery, PHP &amp; MySQL & Bootstrap/Materialize for responsive layout. 
